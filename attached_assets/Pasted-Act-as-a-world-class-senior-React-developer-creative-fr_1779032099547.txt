@@ -1,0 +1,315 @@
+Act as a world-class senior React developer, creative frontend architect, UI/UX designer, motion designer, and branding expert.
+
+Your task is to create a COMPLETE production-ready React landing page website for:
+
+“BHAI LOG”
+by Desi Comedy Live
+
+==================================================
+TECH STACK (IMPORTANT)
+==================================================
+
+Use ONLY:
+
+- React.js
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Icons / Lucide React
+- TypeScript (preferred)
+- Fully responsive design
+- Component-based architecture
+
+==================================================
+GOAL
+==================================================
+
+Build a PREMIUM cinematic landing page for a comedy membership community.
+
+The website should feel like:
+- Netflix comedy special
+- Stand-up comedy festival
+- Premium fan club
+- Gen-Z internet culture
+- Exclusive underground community
+- Modern entertainment startup
+
+This should NOT feel like a normal corporate website.
+
+==================================================
+VISUAL STYLE
+==================================================
+
+Design must include:
+
+- Dark black textured background
+- Yellow + white + red accent colors
+- Neon glow effects
+- Torn paper textures
+- Grunge UI style
+- Handwritten doodles
+- Marker underlines
+- Scrapbook/polaroid layouts
+- Crowd energy
+- Cinematic lighting
+- Bold oversized typography
+- Floating cards
+- Dynamic section transitions
+- Premium hover animations
+
+==================================================
+DESIGN QUALITY
+==================================================
+
+The UI should look:
+- award-winning
+- modern
+- premium
+- emotional
+- high-energy
+- visually alive
+
+The output should feel like:
+Awwwards + Dribbble quality.
+
+==================================================
+IMPORTANT REQUIREMENTS
+==================================================
+
+Make sure:
+- fully responsive
+- reusable components
+- clean architecture
+- proper folder structure
+- smooth animations
+- optimized layout
+- semantic HTML
+- modern typography hierarchy
+- pixel-perfect spacing
+- smooth scrolling
+- hover interactions
+- loading transitions
+
+==================================================
+WEBSITE STRUCTURE
+==================================================
+
+========================
+1. HERO SECTION
+========================
+
+Create a cinematic hero section.
+
+Layout:
+- left side = text + CTA
+- right side = comedian visual collage
+
+Include:
+- giant bold heading
+- supporting text
+- CTA buttons
+- audience stats
+- floating cards
+- crowd visuals
+- play button overlay
+- handwritten notes
+- neon signage
+
+Heading:
+“NOT JUST COMEDY FANS.
+YOU’RE BHAI LOG.”
+
+Subheading:
+“An exclusive founders club by Desi Comedy Live.”
+
+Buttons:
+- Join Bhai Log
+- Get Founder Access
+
+Stats:
+- 5000+ Members
+- Sold Out Shows
+- Top Comedians
+- Audience Laughs
+
+Animations:
+- fade up
+- floating motion
+- hover scale
+- glow pulse
+- stagger animations
+
+==================================================
+2. WHAT IS BHAI LOG SECTION
+==================================================
+
+Layout:
+- left = scrapbook image collage
+- right = emotional storytelling
+
+Heading:
+“Bhai Log Ka Matlab?”
+
+Add:
+- taped polaroids
+- handwritten notes
+- doodles
+- emotional storytelling
+- mascot/cartoon illustration
+
+Statement:
+“This isn’t just a discount club.
+It’s the inner circle.”
+
+==================================================
+3. BENEFITS SECTION
+==================================================
+
+Heading:
+“Bhai Log Banke Kya Milega?”
+
+Create premium animated cards.
+
+Benefits:
+- Deep discounts
+- BOGO tickets
+- Early access
+- Exclusive merch
+- Giveaways
+- Behind the scenes
+- Shoutouts
+- Members-only drops
+
+Each card should have:
+- glowing border
+- icon
+- hover animation
+- neon effect
+- premium typography
+
+==================================================
+4. SOCIAL PROOF SECTION
+==================================================
+
+Create energetic audience section.
+
+Include:
+- crowd photos
+- testimonials
+- sold-out posters
+- video thumbnails
+- audience reactions
+- review cards
+
+Heading:
+“People Aren’t Just Watching Shows.
+They’re Becoming Bhai Log.”
+
+==================================================
+5. REWARD / STATUS SYSTEM
+==================================================
+
+Create animated progression timeline.
+
+Heading:
+“Level Up Your Bhai Log Status”
+
+Milestones:
+1 Show → Welcome Perks
+2 Shows → Offers
+4 Shows → Merch
+6 Shows → VIP
+10 Shows → Founder Perks
+
+==================================================
+6. HOW IT WORKS SECTION
+==================================================
+
+Modern animated steps UI.
+
+Steps:
+1. Join Bhai Log
+2. Get Insider Access
+3. Attend Shows
+4. Become OG Bhai Log
+
+==================================================
+7. CTA / SIGNUP FORM
+==================================================
+
+Create premium glowing signup form.
+
+Fields:
+- Name
+- Email
+- WhatsApp
+- City
+
+Button:
+“BECOME BHAI LOG”
+
+Include:
+- neon border
+- hover glow
+- handwritten arrows
+- emotional messaging
+
+==================================================
+8. FAQ SECTION
+==================================================
+
+Modern animated accordion FAQ.
+
+==================================================
+9. FINAL CTA + FOOTER
+==================================================
+
+Include:
+- emotional closing statement
+- social links
+- contact info
+- final CTA
+- premium footer layout
+
+==================================================
+ANIMATIONS
+==================================================
+
+Use Framer Motion heavily:
+- scroll reveal
+- parallax
+- floating cards
+- hover tilt
+- neon pulse
+- stagger animation
+- animated counters
+- smooth transitions
+
+==================================================
+MOBILE RESPONSIVENESS
+==================================================
+
+The mobile version should feel:
+- premium
+- smooth
+- clean
+- properly stacked
+- visually balanced
+- touch-friendly
+
+==================================================
+CODE OUTPUT
+==================================================
+
+Generate:
+- complete React code
+- reusable components
+- Tailwind styling
+- Framer Motion animations
+- proper folder structure
+- production-ready UI
+- responsive layout
+- clean readable code
+
+The final website should feel like:
+“A premium Indian comedy community platform designed by a top-tier creative agency.”
