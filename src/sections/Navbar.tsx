@@ -30,7 +30,6 @@ export function Navbar() {
           <a href="#how-it-works" className="hover:text-yellow-400 transition-colors uppercase">How It Works</a>
           <a href="#rewards" className="hover:text-yellow-400 transition-colors uppercase">Rewards</a>
           <a href="#social-proof" className="hover:text-yellow-400 transition-colors uppercase">Galery</a>
-          <a href="#faq" className="hover:text-yellow-400 transition-colors uppercase">FAQ</a>
         </div>
 
         <a

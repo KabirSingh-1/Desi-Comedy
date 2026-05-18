@@ -32,11 +32,11 @@ export function Footer() {
           >
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest mb-1">Quick Links</p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
-              {["All Shows", "About Us", "Bhai Log Benefits", "Gallery", "Contact Us", "FAQ"].map((link) => (
+["All Shows", "About Us", "Bhai Log Benefits", "Gallery", "Contact Us"].map((link) => (
                 <a key={link} href="#" className="text-white/60 text-xs hover:text-yellow-400 transition-colors leading-none">
                   {link}
                 </a>
-              ))}
+              ))
             </div>
           </motion.div>
 
