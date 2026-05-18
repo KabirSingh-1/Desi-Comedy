@@ -85,7 +85,7 @@ const cards = [
 export function Benefits() {
   return (
     <section id="benefits" className="bg-black py-16 overflow-hidden border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full max-w-[1440px] mx-auto px-6">
 
         {/* ── HEADER ── */}
         <div className="relative flex items-start justify-between mb-10">

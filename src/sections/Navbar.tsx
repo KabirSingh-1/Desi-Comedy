@@ -8,7 +8,7 @@ export function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10"
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-3 flex items-center justify-between">
         <a href="/" className="flex-shrink-0">
           <div className="flex flex-col leading-none">
             <span className="font-display font-black text-white text-xl tracking-tight leading-none">

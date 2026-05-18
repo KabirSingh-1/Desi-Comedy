@@ -6,7 +6,11 @@ import { BsTicketPerforated } from "react-icons/bs";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: {
+    duration: 0.7,
+    delay,
+    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+  },
 });
 
 export function Hero() {
@@ -14,13 +18,13 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col bg-black overflow-hidden">
       {/* Main hero area */}
       <div className="relative flex-1 flex items-stretch min-h-[calc(100vh-90px)] pt-[64px]">
-        
+
         {/* Comedian full-bleed image — right 60% */}
-        <div className="absolute inset-0 left-0 md:left-[40%]">
+        <div className="absolute inset-0 left-0 md:left-[20%]">
           <img
             src={heroImage}
             alt="Jolly Bhai on stage"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-top object-right"
           />
           {/* Gradient fade from left so text stays readable */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
@@ -29,7 +33,7 @@ export function Hero() {
         </div>
 
         {/* Left content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex items-center">
+        <div className="relative z-10 w-full max-w-[1440px] mr-auto px-6 flex items-center">
           <div className="w-full md:w-[55%] flex flex-col gap-5 py-12">
 
             {/* Exclusive Founders Club tag */}
@@ -42,34 +46,34 @@ export function Hero() {
 
             {/* Main heading */}
             <motion.div {...fadeUp(0.2)}>
-              <h1 className="font-display font-black uppercase leading-[0.88]">
+              <h1 className="font-display font-black uppercase leading-[0.98]">
                 <span
                   className="block text-white"
-                  style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)" }}
+                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
                 >
                   NOT JUST
                 </span>
                 <span
-                  className="block text-white"
-                  style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)" }}
+                  className="block text-white md:whitespace-nowrap"
+                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
                 >
-                  COMEDY FANS.
+                  COMEDY FANS.{" "}
+                  <span className="text-yellow-400">YOU&apos;RE</span>
                 </span>
                 <span
                   className="block text-yellow-400 relative"
-                  style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)" }}
-                >
-                  YOU'RE
-                </span>
-                <span
-                  className="block text-yellow-400 relative"
-                  style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)" }}
+                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
                 >
                   BHAI LOG.
                   {/* Red underline */}
                   <span
-                    className="absolute -bottom-1 left-0 bg-red-600"
-                    style={{ height: "4px", width: "65%" }}
+                    className="absolute left-0 -bottom-2 h-[3px] w-[92%] bg-red-600"
+                    style={{
+                      WebkitMaskImage:
+                        "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%)",
+                      maskImage:
+                        "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%)",
+                    }}
                   />
                 </span>
               </h1>
@@ -129,71 +133,11 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right annotations (handwritten style) */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.7 }}
-          className="absolute top-24 right-6 md:right-12 z-20 flex flex-col items-end gap-1 hidden md:flex"
-        >
-          <span
-            className="text-white text-xl font-bold text-right leading-snug"
-            style={{ fontFamily: "'Caveat', cursive", textShadow: "2px 2px 8px rgba(0,0,0,0.8)" }}
-          >
-            Jokes Humare,<br />Log Tumhare!
-          </span>
-          {/* Arrow */}
-          <svg width="40" height="60" viewBox="0 0 40 60" fill="none" className="mr-10 mt-1 opacity-80">
-            <path
-              d="M20 0 C20 0 35 20 20 40 C10 52 5 55 10 58"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path d="M8 54 L10 60 L15 57" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
-
-        {/* "BE PART OF THE MADNESS" badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-          className="absolute bottom-20 right-6 md:right-16 z-20 hidden md:block"
-        >
-          <div
-            className="bg-black/90 border border-white/20 px-5 py-3 max-w-[200px] text-right"
-            style={{ backdropFilter: "blur(10px)" }}
-          >
-            <p className="text-white font-display font-black text-xl uppercase leading-tight">
-              BE PART OF<br />THE{" "}
-              <span className="text-yellow-400">MADNESS.</span>
-            </p>
-          </div>
-          {/* Curved arrow annotation */}
-          <svg
-            className="absolute -left-12 -top-8 opacity-70"
-            width="50"
-            height="40"
-            viewBox="0 0 50 40"
-            fill="none"
-          >
-            <path
-              d="M45 5 C30 0 10 10 5 30"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path d="M3 26 L5 33 L11 30" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
       </div>
 
       {/* Stats bar */}
       <div className="relative z-10 bg-[#111111] border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
           <StatItem
             icon={<FiUsers className="text-red-500 text-xl" />}
             value="5,000+"

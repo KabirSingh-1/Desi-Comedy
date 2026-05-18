@@ -72,7 +72,7 @@ export function Rewards() {
         </span>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-[260px_1fr] gap-8 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-12 grid md:grid-cols-[260px_1fr] gap-8 items-center">
 
         {/* ── LEFT: Heading block ── */}
         <motion.div
@@ -150,7 +150,7 @@ export function Rewards() {
 
       {/* ── MIDDLE BLOCK: BTS + FAQ + Final CTA ── */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+        <div className="w-full max-w-[1440px] mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
 
           {/* ── COL 1: Behind the Scenes ── */}
           <motion.div

@@ -6,7 +6,11 @@ const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: {
+    duration: 0.7,
+    delay,
+    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+  },
 });
 
 export function WhatIs() {
@@ -14,7 +18,7 @@ export function WhatIs() {
     <section id="what-is" className="bg-[#0d0d0d] overflow-hidden">
 
       {/* ── TOP BLOCK ── */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
 
         {/* ── LEFT: Photo collage ── */}
         <div className="relative h-[420px] md:h-[480px]">
@@ -189,7 +193,7 @@ export function WhatIs() {
 
       {/* ── BOTTOM STRIP ── */}
       <div className="border-t border-white/10 bg-[#111111]">
-        <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-6 gap-6 items-start">
+        <div className="w-full max-w-[1440px] mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-6 gap-6 items-start">
           {bottomItems.map((item, i) => (
             <motion.div
               key={item.title}
