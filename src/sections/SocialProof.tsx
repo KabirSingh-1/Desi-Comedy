@@ -5,7 +5,11 @@ const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: {
+    duration: 0.6,
+    delay,
+    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+  },
 });
 
 const testimonials = [
@@ -52,7 +56,7 @@ const avatarColors = ["#C0392B", "#1A5276", "#1E8449", "#7D3C98"];
 export function SocialProof() {
   return (
     <section id="social-proof" className="bg-[#0d0d0d] border-t border-white/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-14 flex flex-col gap-10">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-14 flex flex-col gap-10">
 
         {/* ── ROW 1: Heading + Video Thumbs + Thank You box ── */}
         <div className="grid grid-cols-1 md:grid-cols-[280px_1fr_220px] gap-6 items-start">

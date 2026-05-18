@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod/v4";
+import * as z from "zod";
 import { motion } from "framer-motion";
 import concertImage from "@assets/image_1779084650600.png";
 
@@ -65,7 +65,7 @@ export function Signup() {
 
   return (
     <section id="join" className="bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-start">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-14 grid md:grid-cols-2 gap-10 items-start">
 
         {/* ── LEFT: Join the Inner Circle ── */}
         <motion.div

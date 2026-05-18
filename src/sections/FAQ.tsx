@@ -31,7 +31,7 @@ const faqs = [
 export function FAQ() {
   return (
     <section id="faq" className="py-24 relative bg-black border-y border-white/10 z-10">
-      <div className="container mx-auto px-6 max-w-3xl">
+      <div className="w-full max-w-[1440px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

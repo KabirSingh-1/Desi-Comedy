@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export function Footer() {
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/15">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-8">
         <div className="grid grid-cols-2 md:grid-cols-[auto_auto_auto_auto_1fr] gap-8 md:gap-10 items-start">
 
           {/* Logo */}
