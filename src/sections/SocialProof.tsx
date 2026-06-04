@@ -1,5 +1,13 @@
-import { motion } from "framer-motion";
-import concertImage from "@assets/image_1779084650600.png";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import bgImage from "@assets/image_1779084650600.png";
+
+const videoImages = [
+  "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=2062&auto=format&fit=crop"
+];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -46,173 +54,73 @@ const stats = [
   { icon: <PinIcon />, value: "15+", label: "CITIES & VENUES", sub: "PACKED" },
 ];
 
-const soldOutCities = [
-  "SAN JOSE", "FREMONT", "SANTA CLARA",
-  "SUNNYVALE", "BERKELEY", "PALO ALTO",
-];
-
-const avatarColors = ["#C0392B", "#1A5276", "#1E8449", "#7D3C98"];
-
 export function SocialProof() {
   return (
-    <section id="social-proof" className="bg-[#0d0d0d] border-t border-white/10 overflow-hidden">
-      <div className="w-full max-w-[1440px] mx-auto px-6 py-14 flex flex-col gap-10">
+    <section id="social-proof" className="bg-background border-t border-border overflow-hidden pb-16">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-20 flex flex-col gap-16">
 
-        {/* ── ROW 1: Heading + Video Thumbs + Thank You box ── */}
-        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr_220px] gap-6 items-start">
-
-          {/* Heading */}
-          <motion.div {...fadeUp(0)} className="flex flex-col gap-2">
-            <h2 className="font-display font-black uppercase leading-[0.9]">
-              <span className="block text-white" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)" }}>
-                LIVE LAUGHS.
+        {/* ── HEADER & HIGHLIGHTS ── */}
+        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 border-b border-border pb-8">
+          <motion.div {...fadeUp(0)} className="flex flex-col gap-3 max-w-xl relative">
+            
+            <h2 className="font-black uppercase leading-[0.95] tracking-normal flex flex-col relative" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(4rem, 7vw, 6.5rem)" }}>
+              <span className="text-foreground">LIVE LAUGHS.</span>
+              <span className="text-primary relative inline-block self-start isolate">
+                REAL PEOPLE.
+                {/* SVG Underline */}
+                <svg className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-auto text-blue-500 -z-10" viewBox="0 0 100 20" fill="none" preserveAspectRatio="none">
+                  <path d="M0,15 Q50,0 100,15" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                </svg>
               </span>
-              <span className="block text-yellow-400 flex items-center gap-2" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)" }}>
-                REAL PEOPLE.<span className="text-red-500 text-2xl">●</span>
-                <span className="text-white text-3xl">👑</span>
-              </span>
-            </h2>
-            <p className="text-white/60 text-sm mt-1">
-              Some moments with our{" "}
-              <span
-                className="text-yellow-400 font-semibold"
-                style={{ textDecoration: "underline", textDecorationColor: "rgba(250,204,21,0.5)" }}
+              
+              {/* Animated Sparkle Accent */}
+              <motion.svg 
+                initial={{ opacity: 0, scale: 0, rotate: 45 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                className="absolute -top-4 -right-12 md:-top-6 md:-right-16 w-8 h-8 md:w-12 md:h-12 text-primary/40 pointer-events-none" 
+                viewBox="0 0 24 24" fill="none"
               >
-                amazing BhaiLog!
-              </span>
+                <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/>
+              </motion.svg>
+            </h2>
+            <p className="text-foreground/70 text-lg md:text-xl mt-2">
+              Some moments with our <span className="text-primary font-bold">amazing BhaiLog!</span>
             </p>
           </motion.div>
 
-          {/* 4 Video Thumbnails */}
-          <div className="grid grid-cols-4 gap-2">
-            {[0, 1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-                whileHover={{ scale: 1.04 }}
-                className="relative rounded-xl overflow-hidden border border-white/10 cursor-pointer group"
-                style={{ aspectRatio: "9/12" }}
-              >
-                <img
-                  src={concertImage}
-                  alt={`Show moment ${i + 1}`}
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: i % 2 === 0 ? "top" : "center" }}
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                {/* Play button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                    <div
-                      className="border-t-[7px] border-t-transparent border-l-[12px] border-l-white border-b-[7px] border-b-transparent ml-1"
-                    />
-                  </div>
+          {/* ── MIDDLE SPACE: Overlapping Avatars ── */}
+          <motion.div 
+            {...fadeUp(0.1)} 
+            className="hidden lg:flex flex-1 items-center justify-center"
+          >
+            <div className="flex items-center -space-x-4 hover:space-x-1 transition-all duration-300">
+              {[
+                { color: "bg-red-500", text: "N" },
+                { color: "bg-blue-500", text: "R" },
+                { color: "bg-green-500", text: "P" },
+                { color: "bg-purple-500", text: "A" },
+              ].map((avatar, i) => (
+                <div 
+                  key={i} 
+                  className={`w-16 h-16 rounded-full border-4 border-background ${avatar.color} flex items-center justify-center text-white font-bold text-xl shadow-lg relative z-${40 - i * 10} transition-transform hover:-translate-y-2`}
+                >
+                  {avatar.text}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Thank You Bhai Log box */}
-          <motion.div {...fadeUp(0.3)} className="flex flex-col gap-2">
-            <div
-              className="border-2 border-red-500 rounded-xl p-4 relative"
-              style={{ boxShadow: "0 0 18px rgba(239,68,68,0.4), inset 0 0 18px rgba(239,68,68,0.05)" }}
-            >
-              <p className="text-white/70 text-xs font-bold uppercase tracking-widest">Thank You</p>
-              <p className="font-display font-black text-yellow-400 text-2xl uppercase leading-none">
-                BHAI LOG!
-              </p>
-              <p className="text-white text-xs font-semibold mt-1 leading-snug">
-                YOU MAKE THIS<br />MADNESS POSSIBLE!
-              </p>
-              {/* Heart */}
-              <span className="absolute top-2 right-3 text-red-500 text-lg">❤️</span>
-            </div>
-
-            {/* Concert photo below box */}
-            <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <img src={concertImage} alt="Show crowd" className="w-full h-full object-cover object-bottom" />
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
-
-            {/* Sticky handwritten note */}
-            <div
-              className="bg-yellow-300 p-2 -rotate-2 shadow-lg"
-              style={{ fontFamily: "'Caveat', cursive" }}
-            >
-              <p className="text-black text-sm leading-snug font-bold">
-                Har show mein pyaar badhta jaa raha hai! ❤️
-              </p>
+              ))}
+              <div className="w-16 h-16 rounded-full border-4 border-background bg-card flex items-center justify-center text-foreground font-bold text-sm shadow-lg relative z-0">
+                1K+
+              </div>
             </div>
           </motion.div>
-        </div>
-
-        {/* ── ROW 2: Testimonials + Rating ── */}
-        <div className="flex flex-col md:flex-row gap-6">
-
-          {/* Left label */}
-          <div className="md:hidden">
-            <h3 className="font-display font-black text-white text-xl uppercase">
-              WHAT OUR <span className="text-yellow-400">BHAI LOG</span> SAY
-            </h3>
-          </div>
-
-          <div className="flex-1 flex flex-col gap-4">
-            <h3 className="font-display font-black text-white text-xl uppercase hidden md:block">
-              WHAT OUR <span className="text-yellow-400">BHAI LOG</span> SAY
-            </h3>
-
-            {/* 4 testimonial cards in a row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-              {testimonials.map((t, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-[#141414] border border-white/10 rounded-xl p-4 flex flex-col gap-3 hover:border-yellow-400/30 transition-colors"
-                >
-                  {/* Avatar + stars */}
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center font-display font-black text-white text-sm flex-shrink-0"
-                      style={{ background: avatarColors[i] }}
-                    >
-                      {t.avatar}
-                    </div>
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, j) => (
-                        <span key={j} className="text-yellow-400 text-xs">★</span>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-white/80 text-xs leading-relaxed flex-1">
-                    {t.quote}
-                  </p>
-                  <p className="text-white/40 text-xs font-semibold">
-                    – {t.name}, {t.location}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Rating box */}
-          <motion.div
-            {...fadeUp(0.3)}
-            className="flex-shrink-0 md:w-48 flex flex-col gap-3 items-center md:items-start justify-center"
-          >
+          
+          <motion.div {...fadeUp(0.2)} className="bg-card border border-border p-5 rounded-2xl shadow-sm flex items-center gap-6 self-start lg:self-end">
             <div>
-              <p className="font-display font-black text-white text-4xl leading-none">RATED 5/5</p>
-              <p className="text-yellow-400 font-black text-base uppercase tracking-wide">BY 1000+ BHAI LOG</p>
-              <p className="text-white/50 text-xs uppercase tracking-wider mt-0.5">ON GOOGLE & SOCIALS</p>
+              <p className="font-black text-foreground text-3xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>RATED 5/5</p>
+              <p className="text-foreground/60 text-xs uppercase tracking-widest mt-1 font-bold">By 1000+ members</p>
             </div>
-            {/* Social icons */}
-            <div className="flex items-center gap-2 mt-1">
+            <div className="flex items-center gap-3 border-l border-border pl-6">
               <GoogleIcon />
               <InstagramIcon />
               <FacebookIcon />
@@ -220,139 +128,145 @@ export function SocialProof() {
           </motion.div>
         </div>
 
-        {/* ── ROW 3: Stats + SOLD OUT section ── */}
-        <div className="flex flex-col md:flex-row gap-6">
-
-          {/* Stats */}
-          <div className="flex-1 flex flex-col gap-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {stats.map((s, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex items-center gap-3"
+        {/* ── SCROLLING VIDEO MARQUEE ── */}
+        <div className="relative w-full overflow-hidden py-4 -mx-6 px-6 md:px-0 md:-mx-0">
+          
+          <motion.div 
+            className="flex gap-4 md:gap-6 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+          >
+            {[...Array(7), ...Array(7)].map((_, index) => {
+              const i = index % 7;
+              return (
+                <div
+                  key={index}
+                  className="relative w-64 md:w-72 lg:w-[300px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-md"
+                  style={{ aspectRatio: "4/5" }}
                 >
-                  <span className="text-red-500 flex-shrink-0">{s.icon}</span>
-                  <div>
-                    <div className="font-display font-black text-white text-2xl leading-none">{s.value}</div>
-                    <div className="text-white/70 text-[10px] font-bold uppercase tracking-wide leading-tight">{s.label}</div>
-                    <div className="text-white/40 text-[10px] uppercase tracking-wide leading-tight">{s.sub}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* SOLD OUT stamp + city posters */}
-          <div className="flex-shrink-0 flex items-start gap-4">
-            {/* SOLD OUT stamp */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: -3 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring", bounce: 0.4, delay: 0.2 }}
-              className="flex flex-col items-center justify-center border-4 border-red-600 px-5 py-4 text-center"
-              style={{ boxShadow: "0 0 16px rgba(220,38,38,0.4)" }}
-            >
-              <span className="font-display font-black text-red-600 text-2xl uppercase leading-none">SOLD OUT</span>
-              <span className="text-white/60 text-xs mt-2 leading-snug">
-                AND WE'RE JUST<br />GETTING STARTED!
-              </span>
-              <span className="text-yellow-400 text-lg mt-1">🙂</span>
-            </motion.div>
-
-            {/* City poster grid */}
-            <div className="grid grid-cols-3 gap-1.5">
-              {soldOutCities.map((city, i) => (
-                <motion.div
-                  key={city}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
-                  className="relative rounded overflow-hidden"
-                  style={{ width: 72, height: 90 }}
-                >
-                  <img src={concertImage} alt={city} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/60" />
-                  <div className="absolute inset-0 flex flex-col items-start justify-between p-1.5">
-                    <div className="flex flex-col leading-none">
-                      <span className="text-white font-black text-[7px] uppercase">DESI</span>
-                      <span className="text-white font-black text-[7px] uppercase">COMEDY</span>
-                      <span className="text-red-500 font-black text-[7px] uppercase">LIVE</span>
-                    </div>
-                    <div>
-                      <div className="text-white font-black text-[8px] uppercase leading-none">{city}</div>
-                      <div className="text-red-500 font-black text-[8px] uppercase leading-none">SOLD OUT</div>
+                  <video
+                    src={`/videos/vid${i}.mp4`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: i % 2 === 0 ? "top" : "center" }}
+                  />
+                  {/* Sleek Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/70" />
+                  
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-110 shadow-xl">
+                      <div className="border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" />
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* ── TESTIMONIALS ── */}
+        <div className="flex flex-col gap-8 mt-4">
+          <h3 className="font-black text-foreground uppercase tracking-widest text-lg md:text-xl">
+            WHAT OUR <span className="text-primary">BHAI LOG</span> SAY
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="bg-card border border-border rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                {/* Avatar + stars */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+                      {t.avatar}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-foreground text-sm leading-tight">{t.name}</span>
+                      <span className="text-foreground/50 text-xs">{t.location}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, j) => (
+                      <span key={j} className="text-primary text-xs">★</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-foreground/80 text-sm leading-relaxed mt-2 italic">
+                  "{t.quote}"
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
 
-        {/* ── BOTTOM BAR ── */}
+        {/* ── STATS SECTION ── */}
+        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 mt-4 shadow-sm">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 divide-x-0 lg:divide-x divide-border">
+            {stats.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className={`flex flex-col items-center text-center gap-2 ${i !== 0 ? 'lg:pl-12' : ''}`}
+              >
+                <span className="text-primary mb-2 bg-primary/10 p-3 rounded-full">{s.icon}</span>
+                <div className="font-black text-foreground text-4xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  {s.value}
+                </div>
+                <div className="text-foreground/60 text-xs font-bold uppercase tracking-widest mt-1">
+                  {s.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── BOTTOM BANNER CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="bg-[#111111] border border-white/10 rounded-xl flex flex-col md:flex-row items-center overflow-hidden"
+          className="mt-8 relative rounded-3xl overflow-hidden bg-foreground shadow-2xl"
         >
-          {/* Comedian image */}
-          <div className="relative flex-shrink-0 h-28 md:h-36 overflow-hidden" style={{ minWidth: 100 }}>
-            <img
-              src={concertImage}
-              alt="Jolly Bhai"
-              className="h-full w-auto object-cover object-top"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#111111]" />
+          <div className="absolute inset-0 opacity-20">
+            <img src={bgImage} alt="Background" className="w-full h-full object-cover grayscale" />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-transparent" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-16 gap-8">
+            <div className="flex flex-col gap-2 max-w-xl text-center md:text-left">
+              <p className="font-black text-background text-3xl md:text-5xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                THIS ISN'T JUST A SHOW.
+              </p>
+              <p className="font-black text-primary text-3xl md:text-5xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                IT'S OUR FAMILY. <span className="text-red-500">❤️</span>
+              </p>
+              <p className="text-background/70 text-base md:text-lg mt-4 max-w-md">
+                Be part of the journey. Get exclusive access, massive discounts, and a community built on laughter.
+              </p>
+            </div>
 
-          {/* Left text */}
-          <div className="px-6 py-5 flex-shrink-0">
-            <p className="font-display font-black text-white text-xl md:text-2xl uppercase leading-tight">
-              THIS ISN'T JUST A SHOW.
-            </p>
-            <p className="font-display font-black text-xl md:text-2xl uppercase leading-tight">
-              <span className="relative inline-block text-white">
-                IT'S{" "}
-                <span className="relative">
-                  <span className="relative z-10 text-yellow-400">OUR FAMILY.</span>
-                </span>
-              </span>
-            </p>
-            <p className="font-display font-black text-xl md:text-2xl uppercase leading-tight">
-              <span className="text-yellow-400">OUR MADNESS.</span>
-              <span className="text-red-500 ml-2">❤️</span>
-            </p>
-          </div>
-
-          {/* Center text */}
-          <div className="flex-1 text-center px-4 py-4">
-            <p className="font-display font-black text-white text-xl md:text-3xl uppercase leading-tight">
-              BE PART OF THE JOURNEY.
-            </p>
-            <p className="font-display font-black text-xl md:text-3xl uppercase leading-tight">
-              BE PART OF{" "}
-              <span className="text-yellow-400">BHAI LOG.</span>
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div className="flex-shrink-0 flex flex-col items-center gap-1 px-6 py-5">
-            <a
-              href="#join"
-              className="bg-yellow-400 text-black font-display font-black text-base uppercase px-6 py-3 flex items-center gap-2 hover:bg-yellow-300 transition-all hover:scale-105 whitespace-nowrap"
-              style={{ boxShadow: "0 0 20px rgba(250,204,21,0.4)" }}
-            >
-              JOIN BHAI LOG NOW ⚡
-            </a>
-            <p className="text-white/40 text-xs">Free to join. Always will be.</p>
+            <div className="flex flex-col items-center gap-4 flex-shrink-0">
+              <a
+                href="#join"
+                className="bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-10 py-5 rounded-full hover:scale-105 hover:bg-opacity-90 transition-all shadow-xl"
+              >
+                JOIN BHAI LOG NOW ⚡
+              </a>
+              <p className="text-background/50 text-xs font-semibold tracking-widest uppercase">Free to join. Always will be.</p>
+            </div>
           </div>
         </motion.div>
 
@@ -407,7 +321,7 @@ function PinIcon() {
 
 function GoogleIcon() {
   return (
-    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
       <svg width="16" height="16" viewBox="0 0 24 24">
         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
         <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -421,7 +335,7 @@ function GoogleIcon() {
 function InstagramIcon() {
   return (
     <div
-      className="w-8 h-8 rounded-full flex items-center justify-center"
+      className="w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
       style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -435,7 +349,7 @@ function InstagramIcon() {
 
 function FacebookIcon() {
   return (
-    <div className="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center">
+    <div className="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center shadow-sm">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
       </svg>

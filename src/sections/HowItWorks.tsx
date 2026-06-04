@@ -26,7 +26,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 relative bg-[#0a0a0a] border-t border-white/10 z-10">
+    <section id="how-it-works" className="py-24 relative bg-card border-t border-border z-10">
       <div className="w-full max-w-[1440px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +35,7 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="font-display font-black text-5xl md:text-6xl text-white uppercase">
+          <h2 className="font-display font-black text-5xl md:text-6xl text-foreground uppercase">
             HOW IT <span className="text-secondary text-neon-red">WORKS?</span>
           </h2>
         </motion.div>
@@ -50,12 +50,12 @@ export function HowItWorks() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="relative group"
             >
-              <div className="font-display font-black text-6xl md:text-8xl text-white/5 group-hover:text-primary/10 transition-colors absolute -top-8 -left-4 select-none pointer-events-none">
+              <div className="font-display font-black text-6xl md:text-8xl text-foreground/5 group-hover:text-primary/10 transition-colors absolute -top-8 -left-4 select-none pointer-events-none">
                 {step.num}
               </div>
               
-              <div className="relative z-10 border border-white/10 bg-card p-6 h-full hover:border-primary/50 transition-colors flex flex-col">
-                <h3 className="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-primary transition-colors">
+              <div className="relative z-10 border border-border bg-card p-6 h-full hover:border-primary/50 transition-colors flex flex-col">
+                <h3 className="font-display font-bold text-2xl text-foreground uppercase mb-3 group-hover:text-primary transition-colors">
                   {step.title}
                 </h3>
                 <p className="font-sans text-muted-foreground text-base mb-6">

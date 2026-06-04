@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/15">
+    <footer className="bg-card border-t border-border">
       <div className="w-full max-w-[1440px] mx-auto px-6 py-8">
         <div className="grid grid-cols-2 md:grid-cols-[auto_auto_auto_auto_1fr] gap-8 md:gap-10 items-start">
 
@@ -14,10 +14,10 @@ export function Footer() {
             transition={{ duration: 0.5 }}
             className="flex flex-col leading-none gap-0"
           >
-            <span className="font-display font-black text-white text-2xl tracking-tight">DESI</span>
-            <span className="font-display font-black text-white text-2xl tracking-tight">COMEDY</span>
+            <span className="font-display font-black text-foreground text-2xl tracking-tight">DESI</span>
+            <span className="font-display font-black text-foreground text-2xl tracking-tight">COMEDY</span>
             <div className="flex items-center gap-2">
-              <span className="font-display font-black text-white text-2xl tracking-tight">LIVE</span>
+              <span className="font-display font-black text-foreground text-2xl tracking-tight">LIVE</span>
               <span className="w-3 h-3 rounded-full bg-red-600 flex-shrink-0" />
             </div>
           </motion.div>
@@ -33,7 +33,7 @@ export function Footer() {
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest mb-1">Quick Links</p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
               {["All Shows", "About Us", "Bhai Log Benefits", "Gallery", "Contact Us", "FAQ"].map((link) => (
-                <a key={link} href="#" className="text-white/60 text-xs hover:text-yellow-400 transition-colors leading-none">
+                <a key={link} href="#" className="text-foreground/60 text-xs hover:text-yellow-400 transition-colors leading-none">
                   {link}
                 </a>
               ))}
@@ -80,7 +80,7 @@ export function Footer() {
               </a>
               {/* X */}
               <a href="#" aria-label="X / Twitter"
-                className="w-8 h-8 rounded-full bg-black border border-white/20 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h7.04l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -106,11 +106,11 @@ export function Footer() {
             className="flex flex-col gap-2"
           >
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest">Contact Us</p>
-            <div className="flex items-center gap-2 text-white/60 text-xs">
+            <div className="flex items-center gap-2 text-foreground/60 text-xs">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
               <a href="mailto:hello@desicomedylive.com" className="hover:text-yellow-400 transition-colors">hello@desicomedy.live</a>
             </div>
-            <div className="flex items-center gap-2 text-white/60 text-xs">
+            <div className="flex items-center gap-2 text-foreground/60 text-xs">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <a href="tel:+919876543210" className="hover:text-yellow-400 transition-colors">+91 98765 43210</a>
             </div>
@@ -125,7 +125,7 @@ export function Footer() {
             className="flex items-center justify-end"
           >
             <div className="text-right" style={{ fontFamily: "'Caveat', cursive" }}>
-              <p className="text-white font-bold text-2xl leading-tight rotate-1">
+              <p className="text-foreground font-bold text-2xl leading-tight rotate-1">
                 SEE YOU<br />AT THE<br />SHOW! 🙂
               </p>
             </div>
@@ -133,8 +133,8 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 mt-6 pt-4 text-center">
-          <p className="text-white/25 text-xs">
+        <div className="border-t border-border mt-6 pt-4 text-center">
+          <p className="text-foreground/25 text-xs">
             © {new Date().getFullYear()} Desi Comedy Live. All rights reserved.
           </p>
         </div>
