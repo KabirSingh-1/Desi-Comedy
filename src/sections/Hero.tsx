@@ -60,7 +60,7 @@ export function Hero() {
               </svg>
             </span>
           </div>
-          <span className="text-foreground mt-1 md:mt-2">JEETHO</span>
+          <span className="text-foreground mt-1 md:mt-2">JEETO</span>
         </motion.h1>
 
         {/* Subtitle */}
