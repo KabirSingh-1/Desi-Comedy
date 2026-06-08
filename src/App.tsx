@@ -13,7 +13,6 @@ import { SocialProof } from "./sections/SocialProof";
 import { Rewards } from "./sections/Rewards";
 import { HowItWorks } from "./sections/HowItWorks";
 import { Signup } from "./sections/Signup";
-import { FAQ } from "./sections/FAQ";
 import { Footer } from "./sections/Footer";
 
 const queryClient = new QueryClient();
@@ -30,7 +29,6 @@ function Home() {
       <Rewards />
       <HowItWorks />
       <Signup />
-      <FAQ />
       <Footer />
     </div>
   );
