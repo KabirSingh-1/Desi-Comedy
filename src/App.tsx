@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 
 import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
+import { ImageCarousel } from "./sections/ImageCarousel";
 import { WhatIs } from "./sections/WhatIs";
 import { Benefits } from "./sections/Benefits";
 import { SocialProof } from "./sections/SocialProof";
@@ -18,9 +19,10 @@ const queryClient = new QueryClient();
 
 function Home() {
   return (
-    <div className="min-h-screen bg-black w-full overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground w-full overflow-x-hidden">
       <Navbar />
       <Hero />
+      <ImageCarousel />
       <WhatIs />
       <Benefits />
       <SocialProof />

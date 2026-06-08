@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -52,73 +52,73 @@
 }
 
 :root {
-  /* Default to dark mode colors */
-  --background: 0 0% 4%; /* #0a0a0a */
-  --foreground: 0 0% 98%;
+  /* Chai & Chalk Theme */
+  --background: 33 30% 96%; /* #F9F5F0 */
+  --foreground: 0 0% 17%; /* #2C2C2C */
 
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 48 96% 53%; /* Yellow */
+  --border: 33 20% 85%;
+  --input: 33 20% 85%;
+  --ring: 37 91% 44%; /* #D4850A */
 
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 0 0% 15%;
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 0 0% 17%; /* #2C2C2C */
+  --card-border: 33 20% 85%;
 
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 0 0% 15%;
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 0 0% 17%; /* #2C2C2C */
+  --popover-border: 33 20% 85%;
 
-  --primary: 48 96% 53%; /* Yellow #FACC15 */
-  --primary-foreground: 0 0% 4%; /* Black */
+  --primary: 37 91% 44%; /* #D4850A */
+  --primary-foreground: 0 0% 100%;
   
-  --secondary: 0 84% 60%; /* Red #EF4444 */
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 153 40% 30%; /* #2D6A4F */
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
+  --muted: 33 20% 90%;
+  --muted-foreground: 0 0% 40%;
 
-  --accent: 0 0% 15%;
-  --accent-foreground: 0 0% 98%;
+  --accent: 153 40% 30%; /* #2D6A4F */
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-display: 'Black Han Sans', sans-serif;
+  --app-font-sans: 'Lato', sans-serif;
+  --app-font-display: 'Playfair Display', serif;
   
   --radius: 0.5rem;
 
-  --sidebar: 0 0% 7%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 15%;
-  --sidebar-primary: 48 96% 53%;
-  --sidebar-primary-foreground: 0 0% 4%;
-  --sidebar-accent: 0 0% 15%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 48 96% 53%;
+  --sidebar: 33 30% 96%;
+  --sidebar-foreground: 0 0% 17%;
+  --sidebar-border: 33 20% 85%;
+  --sidebar-primary: 37 91% 44%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 153 40% 30%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-ring: 37 91% 44%;
 }
 
 .dark {
-  /* Same as above since it's a dark theme by default */
-  --background: 0 0% 4%;
-  --foreground: 0 0% 98%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 48 96% 53%;
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 0 0% 15%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 0 0% 15%;
-  --primary: 48 96% 53%;
-  --primary-foreground: 0 0% 4%;
-  --secondary: 0 84% 60%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 0 0% 15%;
-  --accent-foreground: 0 0% 98%;
+  /* Chai & Chalk Theme (Dark Mode Mirror) */
+  --background: 33 30% 96%;
+  --foreground: 0 0% 17%;
+  --border: 33 20% 85%;
+  --input: 33 20% 85%;
+  --ring: 37 91% 44%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 17%;
+  --card-border: 33 20% 85%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 17%;
+  --popover-border: 33 20% 85%;
+  --primary: 37 91% 44%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 153 40% 30%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 33 20% 90%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 153 40% 30%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 }
@@ -148,13 +148,13 @@
 }
 
 .neon-glow {
-  box-shadow: 0 0 15px 2px rgba(250, 204, 21, 0.4);
+  box-shadow: 0 0 15px 2px rgba(232, 98, 42, 0.4);
 }
 
 .neon-glow-red {
-  box-shadow: 0 0 15px 2px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0 15px 2px rgba(192, 57, 43, 0.4);
 }
 
 .text-neon {
-  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+  text-shadow: 0 0 10px rgba(232, 98, 42, 0.5);
 }

@@ -1,221 +1,118 @@
 import { motion } from "framer-motion";
-import heroImage from "@assets/image_1779084650600.png";
-import { FiTag, FiClock, FiUsers, FiMic } from "react-icons/fi";
-import { BsTicketPerforated } from "react-icons/bs";
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: {
-    duration: 0.7,
-    delay,
-    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-  },
-});
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col bg-black overflow-hidden">
-      {/* Main hero area */}
-      <div className="relative flex-1 flex items-stretch min-h-[calc(100vh-90px)] pt-[64px]">
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center bg-background overflow-hidden px-6 pt-20 pb-24 md:pb-32">
 
-        {/* Comedian full-bleed image — right 60% */}
-        <div className="absolute inset-0 left-0 md:left-[20%]">
-          <img
-            src={heroImage}
-            alt="Jolly Bhai on stage"
-            className="w-full h-full object-cover object-top object-right"
-          />
-          {/* Gradient fade from left so text stays readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
-        </div>
+      {/* Background geometric shapes */}
+      <div className="absolute -top-[10%] -right-[10%] w-[50vw] h-[50vw] max-w-[500px] max-h-[500px] rounded-full bg-primary/15 pointer-events-none" />
+      <div className="absolute -bottom-[10%] -left-[10%] w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] rounded-full bg-primary/15 pointer-events-none" />
 
-        {/* Left content */}
-        <div className="relative z-10 w-full max-w-[1440px] mr-auto px-6 flex items-center">
-          <div className="w-full md:w-[55%] flex flex-col gap-5 py-12">
+      <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-5 mt-10 md:mt-16">
 
-            {/* Exclusive Founders Club tag */}
-            <motion.div {...fadeUp(0.1)} className="flex items-center gap-2">
-              <span className="text-yellow-400 font-display font-bold text-sm uppercase tracking-widest">
-                Exclusive Founders Club
-              </span>
-              <span className="text-yellow-400 text-lg">👑</span>
-            </motion.div>
+        {/* Top small text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-2 text-primary font-bold text-xs md:text-sm tracking-[0.2em] uppercase"
+        >
+          <span>🎤</span>
+          <span>DESI COMEDY LIVE</span>
+        </motion.div>
 
-            {/* Main heading */}
-            <motion.div {...fadeUp(0.2)}>
-              <h1 className="font-display font-black uppercase leading-[0.98]">
-                <span
-                  className="block text-white"
-                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
-                >
-                  NOT JUST
-                </span>
-                <span
-                  className="block text-white md:whitespace-nowrap"
-                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
-                >
-                  COMEDY FANS.{" "}
-                  <span className="text-yellow-400">YOU&apos;RE</span>
-                </span>
-                <span
-                  className="block text-yellow-400 relative"
-                  style={{ fontSize: "clamp(2.3rem, 6vw, 4.75rem)" }}
-                >
-                  BHAI LOG.
-                  {/* Red underline */}
-                  <span
-                    className="absolute left-0 -bottom-2 h-[3px] w-[92%] bg-red-600"
-                    style={{
-                      WebkitMaskImage:
-                        "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%)",
-                      maskImage:
-                        "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%)",
-                    }}
-                  />
-                </span>
-              </h1>
-            </motion.div>
+        {/* Main Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative font-black uppercase leading-[0.9] tracking-normal flex flex-col items-center mt-2"
+          style={{ fontSize: "clamp(3.8rem, 11vw, 8.5rem)", fontFamily: "'Bebas Neue', sans-serif" }}
+        >
+          {/* Sparkle top-left */}
+          <motion.svg
+            initial={{ opacity: 0, scale: 0, rotate: -45 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+            className="absolute -top-6 -left-8 md:-top-8 md:-left-16 w-8 h-8 md:w-12 md:h-12 text-primary/40 pointer-events-none"
+            viewBox="0 0 24 24" fill="none"
+          >
+            <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor" />
+          </motion.svg>
 
-            {/* Subtext */}
-            <motion.p
-              {...fadeUp(0.35)}
-              className="text-white/75 text-base md:text-lg max-w-[480px] leading-relaxed mt-2"
-            >
-              Join Bhai Log – an exclusive club by{" "}
-              <span className="text-yellow-400 font-semibold">Desi Comedy Live</span>{" "}
-              and unlock crazy discounts, early access, backstage content, giveaways and much more.
-            </motion.p>
+          {/* Sparkle bottom-right */}
+          <motion.svg
+            initial={{ opacity: 0, scale: 0, rotate: 45 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+            className="absolute -bottom-2 -right-6 md:-bottom-4 md:-right-12 w-6 h-6 md:w-8 md:h-8 text-foreground/20 pointer-events-none"
+            viewBox="0 0 24 24" fill="none"
+          >
+            <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor" />
+          </motion.svg>
 
-            {/* Feature pills */}
-            <motion.div
-              {...fadeUp(0.45)}
-              className="flex flex-wrap gap-3 mt-1"
-            >
-              <Pill icon={<FiTag className="text-yellow-400" />} label="DEEP DISCOUNTS" sub="ON EVERY SHOW" />
-              <Pill icon={<BogoBadge />} label="BUY 1 GET 1" sub="ON SELECT SHOWS" />
-              <Pill icon={<FiClock className="text-yellow-400" />} label="48-HOUR EARLY" sub="ACCESS TO TICKETS" />
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4 mt-2">
-              <a
-                href="#join"
-                className="bg-yellow-400 text-black font-display font-black text-base uppercase px-7 py-3.5 flex items-center gap-2 hover:bg-yellow-300 transition-all hover:scale-105 active:scale-95 tracking-wide"
-                style={{ boxShadow: "0 0 24px rgba(250,204,21,0.45)" }}
-              >
-                JOIN BHAI LOG <span className="text-lg">⚡</span>
-              </a>
-              <a
-                href="#social-proof"
-                className="bg-transparent border border-white/40 text-white font-display font-bold text-base uppercase px-7 py-3.5 flex items-center gap-2 hover:bg-white/10 transition-all hover:scale-105 active:scale-95 tracking-wide"
-              >
-                <span className="w-6 h-6 rounded-full border border-white/60 flex items-center justify-center">
-                  <span
-                    className="border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-0.5"
-                    style={{ display: "inline-block" }}
-                  />
-                </span>
-                WATCH BHAI LOG IN ACTION
-              </a>
-            </motion.div>
-
-            {/* Free to join */}
-            <motion.div {...fadeUp(0.65)} className="flex items-center gap-1.5 text-white/40 text-xs">
-              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-                <rect x="1" y="5" width="10" height="8" rx="1" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M3.5 5V3.5a2.5 2.5 0 015 0V5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <div className="flex flex-wrap justify-center gap-x-4 md:gap-x-6">
+            <span className="text-foreground">HASSO</span>
+            <span className="text-primary relative inline-block isolate">
+              KHELO
+              <svg className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-auto text-blue-500 -z-10" viewBox="0 0 100 20" fill="none" preserveAspectRatio="none">
+                <path d="M0,10 Q50,22 100,2" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
               </svg>
-              Free to join. Always will be.
-            </motion.div>
+            </span>
           </div>
+          <span className="text-foreground mt-1 md:mt-2">JEETO</span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-foreground/80 text-base md:text-[19px] max-w-2xl mt-4 leading-relaxed px-4"
+        >
+          Bay Area's boldest Bollywood comedy night — live music,
+          <br className="hidden md:block" />
+          crowd chaos, and Bollywood Bingo™ like you've never seen it.
+        </motion.p>
+
+        {/* Buttons Section with Decorative Arrow */}
+        <div className="relative mt-8 w-full sm:w-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#join"
+              className="w-full sm:w-auto bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-10 py-4 md:py-4 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all flex items-center justify-center relative overflow-hidden group"
+              style={{ boxShadow: "0 8px 24px -6px var(--color-primary)" }}
+            >
+              <span className="relative z-10">GET TICKETS</span>
+              <div className="absolute inset-0 h-full w-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+            </a>
+            <a
+              href="#shows"
+              className="w-full sm:w-auto bg-transparent border-2 border-foreground text-foreground font-bold text-sm uppercase tracking-wider px-10 py-4 md:py-4 rounded-full hover:bg-foreground/5 transition-all flex items-center justify-center"
+            >
+              SEE ALL SHOWS
+            </a>
+          </motion.div>
+
+          {/* Decorative Sleek Arrow pointing to buttons */}
+          <motion.svg
+            initial={{ opacity: 0, strokeDasharray: "0 100", strokeDashoffset: 0 }}
+            animate={{ opacity: 1, strokeDasharray: "100 100", strokeDashoffset: 0 }}
+            transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+            className="absolute -top-8 -right-8 md:-top-12 md:-right-16 w-12 md:w-16 h-auto text-primary/60 hidden md:block pointer-events-none"
+            viewBox="0 0 100 100" fill="none"
+          >
+            <path d="M10 20 Q 80 20 80 80" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
+            <path d="M60 75 L 80 80 L 85 60" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
         </div>
 
-      </div>
-
-      {/* Stats bar */}
-      <div className="relative z-10 bg-[#111111] border-t border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-          <StatItem
-            icon={<FiUsers className="text-red-500 text-xl" />}
-            value="5,000+"
-            label="Bhai Log Members"
-            delay={0.2}
-          />
-          <StatItem
-            icon={<BsTicketPerforated className="text-red-500 text-xl" />}
-            value="50+"
-            label="Sold Out Shows in Bay Area"
-            delay={0.3}
-          />
-          <StatItem
-            icon={
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <circle cx="11" cy="11" r="8" stroke="#EF4444" strokeWidth="1.8" />
-                <path d="M7 11 C8 9 10 8 11 11 C12 14 14 13 15 11" stroke="#EF4444" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-              </svg>
-            }
-            value="10K+"
-            label="Audience Laughs Shared"
-            delay={0.4}
-          />
-          <StatItem
-            icon={<FiMic className="text-red-500 text-xl" />}
-            value="TOP"
-            label={<>Comedians<br />Epic Nights. Non Stop Laughter.</>}
-            delay={0.5}
-          />
-        </div>
       </div>
     </section>
-  );
-}
-
-function Pill({ icon, label, sub }: { icon: React.ReactNode; label: string; sub: string }) {
-  return (
-    <div className="flex items-center gap-2 bg-white/5 border border-white/15 px-3 py-2 rounded-sm">
-      <span className="flex-shrink-0">{icon}</span>
-      <div>
-        <div className="text-white font-bold text-[10px] uppercase tracking-wider leading-none">{label}</div>
-        <div className="text-white/50 text-[9px] uppercase tracking-wide leading-none mt-0.5">{sub}</div>
-      </div>
-    </div>
-  );
-}
-
-function BogoBadge() {
-  return (
-    <div className="bg-yellow-400 text-black font-black text-[9px] px-1 py-0.5 rounded-sm leading-none tracking-tight">
-      BOGO
-    </div>
-  );
-}
-
-function StatItem({
-  icon,
-  value,
-  label,
-  delay,
-}: {
-  icon: React.ReactNode;
-  value: string;
-  label: React.ReactNode;
-  delay: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      className="flex items-center gap-3 px-6 first:pl-0 last:pr-0"
-    >
-      <span className="flex-shrink-0">{icon}</span>
-      <div>
-        <div className="font-display font-black text-white text-2xl leading-none">{value}</div>
-        <div className="text-white/50 text-xs leading-tight mt-0.5">{label}</div>
-      </div>
-    </motion.div>
   );
 }
