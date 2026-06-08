@@ -1,0 +1,27 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/kabirsingh/bollybood-wingo/Desi-Comedy/dist"
+publishOrigin = "ui"
+commandOrigin = "ui"
+command = "pnpm --filter asset-manager... run build"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
