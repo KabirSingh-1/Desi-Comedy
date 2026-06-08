@@ -11,9 +11,9 @@ export function Navbar() {
       <div className="w-full max-w-[1440px] mx-auto px-6 py-3 flex items-center justify-between">
         <a href="/" className="flex-shrink-0 flex items-center group">
           <img 
-            src="/logo.jpeg" 
+            src="/logo.png" 
             alt="Desi Comedy Live Logo" 
-            className="h-12 md:h-16 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" 
+            className="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
           />
         </a>
 
