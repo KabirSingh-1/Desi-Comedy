@@ -12,7 +12,7 @@ const cards = [
     icon: <PercentIcon />,
     title: "DEEP DISCOUNTS",
     subtitle: "ON EVERY SHOW",
-    desc: "Special discounts on every live show.",
+    desc: "Groups of 4 or more get deep discounts on every live show.",
   },
   {
     icon: <TicketIcon />,
@@ -25,13 +25,7 @@ const cards = [
     title: "48 HOURS",
     subtitle: "EARLY ACCESS",
     desc: "48 hours advance tickets before anyone else.",
-    badge: "48h",
-  },
-  {
-    icon: <GiftIcon />,
-    title: "EXCLUSIVE",
-    subtitle: "MERCH",
-    desc: "Special merchandise gifts for members.",
+    badge: "48H",
   },
   {
     icon: <ClapperIcon />,
@@ -46,28 +40,7 @@ const cards = [
     desc: "Get shoutouts on our shows & socials.",
   },
   {
-    icon: <GiftIcon />,
-    title: "MONTHLY",
-    subtitle: "GIVEAWAYS",
-    desc: "Monthly drawing of exclusive merch.",
-  },
-  {
-    icon: <TshirtIcon />,
-    title: "4 SHOWS =",
-    subtitle: "MERCH",
-    desc: "Attend 4 shows in a year & get branded merch.",
-  },
-  {
-    icon: <StarIcon />,
-    title: "FIRST DIBS ON",
-    subtitle: "SPECIAL DROPS",
-    desc: "Members-only drops & hidden offers.",
-  },
-  {
-    icon: <PeopleIcon />,
-    title: "PRIORITY COMMUNITY",
-    subtitle: "ACCESS",
-    desc: "Be the first to know, be the first to grab.",
+    isJoinNow: true,
   },
 ];
 
@@ -97,82 +70,93 @@ export function Benefits() {
           </motion.div>
         </div>
 
-        {/* ── CARDS GRID (5 × 2) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm flex flex-col items-start p-6 cursor-default transition-all duration-300 hover:border-primary hover:shadow-lg"
-            >
-              {/* Icon area */}
-              <div className="relative z-10 mb-5 flex items-center justify-between w-full">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  {card.icon}
+        {/* ── CARDS GRID (3 × 2) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {cards.map((card, i) => {
+            if (card.isJoinNow) {
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.06 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="relative overflow-hidden rounded-2xl border-2 border-primary border-dashed bg-card shadow-sm flex flex-col items-start p-8 transition-all duration-300 hover:border-solid hover:bg-primary/5 hover:shadow-lg group cursor-pointer"
+                >
+                  <div className="absolute inset-0 bg-primary/[0.02] group-hover:bg-primary/[0.08] transition-colors" />
+                  
+                  {/* Icon area */}
+                  <div className="relative z-10 mb-6 flex items-center justify-between w-full">
+                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-md">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <div className="relative z-10 flex flex-col mb-4">
+                    <span className="font-black text-foreground text-xl md:text-2xl uppercase leading-none tracking-wide mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      JOIN THE FAMILY
+                    </span>
+                    <span className="font-black text-primary text-xl md:text-2xl uppercase leading-none tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      BECOME BHAI LOG
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="relative z-10 text-foreground/80 leading-relaxed mt-auto font-bold uppercase tracking-widest text-xs flex items-center gap-2">
+                    Free to join. Always will be.
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </p>
+                  <a href="#join" className="absolute inset-0 z-20"></a>
+                </motion.div>
+              );
+            }
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm flex flex-col items-start p-8 transition-all duration-300 hover:border-primary hover:shadow-lg group"
+              >
+                {/* Icon area */}
+                <div className="relative z-10 mb-6 flex items-center justify-between w-full">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    {card.icon}
+                  </div>
+                  {card.badge && (
+                    <span className="text-primary font-black text-2xl leading-none opacity-80" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      {card.badge}
+                    </span>
+                  )}
                 </div>
-                {card.badge && (
-                  <span className="text-primary font-black text-xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {card.badge}
+
+                {/* Title */}
+                <div className="relative z-10 flex flex-col mb-4">
+                  <span className="font-black text-foreground text-xl md:text-2xl uppercase leading-none tracking-wide mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {card.title}
                   </span>
-                )}
-              </div>
+                  <span className="font-black text-primary text-xl md:text-2xl uppercase leading-none tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {card.subtitle}
+                  </span>
+                </div>
 
-              {/* Title */}
-              <div className="relative z-10 flex flex-col mb-3">
-                <span className="font-black text-foreground text-lg md:text-xl uppercase leading-tight tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                  {card.title}
-                </span>
-                <span className="font-black text-primary text-lg md:text-xl uppercase leading-tight tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                  {card.subtitle}
-                </span>
-              </div>
-
-              {/* Description */}
-              <p className="relative z-10 text-foreground/70 text-sm leading-relaxed mt-auto">
-                {card.desc}
-              </p>
-            </motion.div>
-          ))}
+                {/* Description */}
+                <p className="relative z-10 text-foreground/70 text-base leading-relaxed mt-auto font-medium">
+                  {card.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* ── BOTTOM BAR ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-16 bg-primary rounded-2xl flex flex-col md:flex-row items-center justify-between overflow-hidden shadow-xl"
-        >
-          {/* Center: movement text */}
-          <div className="flex-1 text-center md:text-left py-8 md:py-12 px-8 md:px-12">
-            <p className="font-black text-primary-foreground/90 text-2xl md:text-4xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              NOT JUST AN AUDIENCE.
-            </p>
-            <p className="font-black text-background text-3xl md:text-5xl uppercase leading-tight flex items-center justify-center md:justify-start gap-3 mt-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              WE'RE A MOVEMENT. 👑
-            </p>
-          </div>
 
-          {/* Right: CTA box */}
-          <div className="bg-background flex flex-col items-center md:items-start justify-center px-10 py-10 gap-4 self-stretch border-l-4 border-black/10">
-            <div className="text-center md:text-left">
-              <p className="text-foreground/60 text-xs font-bold uppercase tracking-widest mb-1">Join the inner circle.</p>
-              <p className="text-foreground font-black text-2xl md:text-3xl uppercase leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                JOIN BHAI LOG! ⚡
-              </p>
-            </div>
-            <a
-              href="#join"
-              className="bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-6 py-4 rounded-full hover:opacity-90 hover:-translate-y-0.5 transition-all flex items-center justify-center whitespace-nowrap shadow-lg"
-            >
-              <span className="mr-2 text-lg">👥</span> JOIN NOW
-            </a>
-          </div>
-        </motion.div>
 
       </div>
     </section>

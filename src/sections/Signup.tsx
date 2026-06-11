@@ -109,7 +109,7 @@ export function Signup() {
             <span className="text-primary">BHAI LOG</span>
             <span className="text-foreground"> TODAY.</span>
             <br />
-            <span className="text-foreground">AND LET'S MAKE INDIA </span>
+            <span className="text-foreground">AND LET'S </span>
             <span className="text-primary">LAUGH LOUDER!</span>
           </div>
 
@@ -125,7 +125,7 @@ export function Signup() {
               />
               {/* Handwritten note */}
               <div
-                className="absolute top-3 -left-2 bg-primary text-primary-foreground p-3 -rotate-2 rounded-sm"
+                className="absolute bottom-3 -right-2 bg-primary text-primary-foreground p-3 rotate-2 rounded-sm"
                 style={{ fontFamily: "'Caveat', cursive", width: 130, fontSize: "0.9rem" }}
               >
                 <p className="font-bold leading-tight">
@@ -162,23 +162,7 @@ export function Signup() {
             </div>
           </div>
 
-          {/* Bottom 4 icons */}
-          <div className="grid grid-cols-4 gap-2 border-t border-border pt-5">
-            {bottomIcons.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="flex flex-col items-center text-center gap-1"
-              >
-                <span className="text-2xl">{item.icon}</span>
-                <span className="text-red-500 font-display font-black text-[9px] uppercase leading-none tracking-wide">{item.label}</span>
-                <span className="text-foreground/50 text-[9px] uppercase leading-none">{item.sub}</span>
-              </motion.div>
-            ))}
-          </div>
+
         </motion.div>
 
         {/* ── RIGHT: Form ── */}
@@ -251,7 +235,7 @@ export function Signup() {
                     <Controller
                       control={control}
                       name="countryCode"
-                      defaultValue="+91"
+                      defaultValue="+1"
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <SelectTrigger className="w-[110px] bg-transparent border-0 shadow-none focus:ring-0 text-foreground/70 font-medium pl-4 pr-1 h-[50px] outline-none rounded-lg">
@@ -374,7 +358,7 @@ export function Signup() {
               <div className="flex items-center justify-center gap-2 bg-transparent border border-border/80 rounded-xl px-4 py-4 mt-2">
                 <span className="text-primary text-xl">⭐</span>
                 <p className="text-foreground/80 text-[13px] font-bold uppercase leading-snug tracking-wide">
-                  1000+ BHAI LOG ALREADY JOINED.{" "}
+                  BHAI LOG ARE JOINING DAILY.{" "}
                   <span className="text-primary">KYA AAP MISSING HO?</span>{" "}
                   <span className="text-foreground/40 font-normal">←</span>
                 </p>

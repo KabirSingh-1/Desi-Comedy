@@ -48,41 +48,52 @@ const testimonials = [
 ];
 
 const stats = [
-  { icon: <TicketIcon />, value: "50+", label: "SOLD OUT SHOWS", sub: "IN BAY AREA" },
-  { icon: <PeopleIcon />, value: "1000+", label: "SHOWS. LAUGHS.", sub: "MEMORIES." },
-  { icon: <MicIcon />, value: "25+", label: "TOP COMEDIANS", sub: "FEATURED" },
+  { icon: <TicketIcon />, value: "100+", label: "SOLD OUT SHOWS", sub: "IN BAY AREA" },
+  { icon: <PeopleIcon />, value: "7000+", label: "AUDIENCE LAUGHS", sub: "MEMORIES." },
   { icon: <PinIcon />, value: "15+", label: "CITIES & VENUES", sub: "PACKED" },
 ];
 
 export function SocialProof() {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  // prevent body scrolling when modal is open
+  useEffect(() => {
+    if (selectedVideo) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => { document.body.style.overflow = "auto"; };
+  }, [selectedVideo]);
+
   return (
     <section id="social-proof" className="bg-background border-t border-border overflow-hidden pb-16">
       <div className="w-full max-w-[1440px] mx-auto px-6 py-20 flex flex-col gap-16">
 
         {/* ── HEADER & HIGHLIGHTS ── */}
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 border-b border-border pb-8">
-          <motion.div {...fadeUp(0)} className="flex flex-col gap-3 max-w-xl relative">
-            
-            <h2 className="font-black uppercase leading-[0.95] tracking-normal flex flex-col relative" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(4rem, 7vw, 6.5rem)" }}>
-              <span className="text-foreground">LIVE LAUGHS.</span>
-              <span className="text-primary relative inline-block self-start isolate">
-                REAL PEOPLE.
+        <div className="flex flex-col justify-center items-center gap-8 pb-8">
+          <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center gap-3 max-w-3xl relative">
+
+            <h2 className="font-black uppercase leading-[0.95] tracking-normal flex flex-col items-center relative" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(4rem, 7vw, 6.5rem)" }}>
+              <span className="text-foreground">Real Laughs.</span>
+              <span className="text-primary relative inline-block isolate">
+                Real People.
                 {/* SVG Underline */}
                 <svg className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-auto text-blue-500 -z-10" viewBox="0 0 100 20" fill="none" preserveAspectRatio="none">
                   <path d="M0,15 Q50,0 100,15" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                 </svg>
               </span>
-              
+
               {/* Animated Sparkle Accent */}
-              <motion.svg 
+              <motion.svg
                 initial={{ opacity: 0, scale: 0, rotate: 45 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="absolute -top-4 -right-12 md:-top-6 md:-right-16 w-8 h-8 md:w-12 md:h-12 text-primary/40 pointer-events-none" 
+                className="absolute -top-4 -right-8 md:-top-6 md:-right-12 w-8 h-8 md:w-12 md:h-12 text-primary/40 pointer-events-none"
                 viewBox="0 0 24 24" fill="none"
               >
-                <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/>
+                <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor" />
               </motion.svg>
             </h2>
             <p className="text-foreground/70 text-lg md:text-xl mt-2">
@@ -90,48 +101,13 @@ export function SocialProof() {
             </p>
           </motion.div>
 
-          {/* ── MIDDLE SPACE: Overlapping Avatars ── */}
-          <motion.div 
-            {...fadeUp(0.1)} 
-            className="hidden lg:flex flex-1 items-center justify-center"
-          >
-            <div className="flex items-center -space-x-4 hover:space-x-1 transition-all duration-300">
-              {[
-                { color: "bg-red-500", text: "N" },
-                { color: "bg-blue-500", text: "R" },
-                { color: "bg-green-500", text: "P" },
-                { color: "bg-purple-500", text: "A" },
-              ].map((avatar, i) => (
-                <div 
-                  key={i} 
-                  className={`w-16 h-16 rounded-full border-4 border-background ${avatar.color} flex items-center justify-center text-white font-bold text-xl shadow-lg relative z-${40 - i * 10} transition-transform hover:-translate-y-2`}
-                >
-                  {avatar.text}
-                </div>
-              ))}
-              <div className="w-16 h-16 rounded-full border-4 border-background bg-card flex items-center justify-center text-foreground font-bold text-sm shadow-lg relative z-0">
-                1K+
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div {...fadeUp(0.2)} className="bg-card border border-border p-5 rounded-2xl shadow-sm flex items-center gap-6 self-start lg:self-end">
-            <div>
-              <p className="font-black text-foreground text-3xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>RATED 5/5</p>
-              <p className="text-foreground/60 text-xs uppercase tracking-widest mt-1 font-bold">By 1000+ members</p>
-            </div>
-            <div className="flex items-center gap-3 border-l border-border pl-6">
-              <GoogleIcon />
-              <InstagramIcon />
-              <FacebookIcon />
-            </div>
-          </motion.div>
+
         </div>
 
         {/* ── SCROLLING VIDEO MARQUEE ── */}
         <div className="relative w-full overflow-hidden py-4 -mx-6 px-6 md:px-0 md:-mx-0">
-          
-          <motion.div 
+
+          <motion.div
             className="flex gap-4 md:gap-6 w-max"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ ease: "linear", duration: 30, repeat: Infinity }}
@@ -143,6 +119,7 @@ export function SocialProof() {
                   key={index}
                   className="relative w-64 md:w-72 lg:w-[300px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-md"
                   style={{ aspectRatio: "4/5" }}
+                  onClick={() => setSelectedVideo(`/videos/vid${i}.mp4`)}
                 >
                   <video
                     src={`/videos/vid${i}.mp4`}
@@ -155,11 +132,16 @@ export function SocialProof() {
                   />
                   {/* Sleek Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/70" />
-                  
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-110 shadow-xl">
-                      <div className="border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" />
+
+                  {/* Expand icon */}
+                  <div className="absolute bottom-4 right-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <div className="text-white/90 group-hover:text-primary transition-colors drop-shadow-lg">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 3h6v6"></path>
+                        <path d="M9 21H3v-6"></path>
+                        <path d="M21 3l-7 7"></path>
+                        <path d="M3 21l7-7"></path>
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -209,26 +191,28 @@ export function SocialProof() {
         </div>
 
         {/* ── STATS SECTION ── */}
-        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 mt-4 shadow-sm">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 divide-x-0 lg:divide-x divide-border">
-            {stats.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`flex flex-col items-center text-center gap-2 ${i !== 0 ? 'lg:pl-12' : ''}`}
-              >
-                <span className="text-primary mb-2 bg-primary/10 p-3 rounded-full">{s.icon}</span>
-                <div className="font-black text-foreground text-4xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                  {s.value}
-                </div>
-                <div className="text-foreground/60 text-xs font-bold uppercase tracking-widest mt-1">
-                  {s.label}
-                </div>
-              </motion.div>
-            ))}
+        <div className="w-full flex justify-center mt-4">
+          <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm w-full lg:w-1/2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className={`flex flex-col items-center text-center gap-2 ${i !== 0 ? 'md:pl-8 pt-8 md:pt-0' : ''}`}
+                >
+                  <span className="text-primary mb-2 bg-primary/10 p-3 rounded-full">{s.icon}</span>
+                  <div className="font-black text-foreground text-4xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {s.value}
+                  </div>
+                  <div className="text-foreground/60 text-xs font-bold uppercase tracking-widest mt-1">
+                    {s.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -244,14 +228,11 @@ export function SocialProof() {
             <img src={bgImage} alt="Background" className="w-full h-full object-cover grayscale" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-transparent" />
-          
+
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-16 gap-8">
             <div className="flex flex-col gap-2 max-w-xl text-center md:text-left">
-              <p className="font-black text-background text-3xl md:text-5xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                THIS ISN'T JUST A SHOW.
-              </p>
-              <p className="font-black text-primary text-3xl md:text-5xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                IT'S OUR FAMILY. <span className="text-red-500">❤️</span>
+              <p className="font-black text-background text-4xl md:text-6xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                YOU ARE <span className="text-primary">OUR FAMILY.</span> <span className="text-red-500">❤️</span>
               </p>
               <p className="text-background/70 text-base md:text-lg mt-4 max-w-md">
                 Be part of the journey. Get exclusive access, massive discounts, and a community built on laughter.
@@ -265,12 +246,46 @@ export function SocialProof() {
               >
                 JOIN BHAI LOG NOW ⚡
               </a>
-              <p className="text-background/50 text-xs font-semibold tracking-widest uppercase">Free to join. Always will be.</p>
+              <p className="text-background/50 text-xs font-semibold tracking-widest uppercase">Free to join.</p>
             </div>
           </div>
         </motion.div>
 
       </div>
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-8"
+            onClick={() => setSelectedVideo(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-white bg-black/50 hover:bg-white/20 rounded-full p-2 w-10 h-10 flex items-center justify-center transition-colors z-[101]"
+              onClick={() => setSelectedVideo(null)}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-[1000px] max-h-[90vh] w-full rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video 
+                src={selectedVideo} 
+                controls 
+                autoPlay 
+                playsInline
+                className="w-full h-full object-contain"
+                style={{ maxHeight: '90vh' }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

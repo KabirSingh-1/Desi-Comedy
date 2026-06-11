@@ -11,7 +11,6 @@ import { WhatIs } from "./sections/WhatIs";
 import { Benefits } from "./sections/Benefits";
 import { SocialProof } from "./sections/SocialProof";
 import { Rewards } from "./sections/Rewards";
-import { HowItWorks } from "./sections/HowItWorks";
 import { Signup } from "./sections/Signup";
 import { Footer } from "./sections/Footer";
 
@@ -24,10 +23,9 @@ function Home() {
       <Hero />
       <ImageCarousel />
       <WhatIs />
-      <Benefits />
       <SocialProof />
+      <Benefits />
       <Rewards />
-      <HowItWorks />
       <Signup />
       <Footer />
     </div>
