@@ -7,7 +7,6 @@ import NotFound from "@/pages/not-found";
 import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
 import { ImageCarousel } from "./sections/ImageCarousel";
-import { WhatIs } from "./sections/WhatIs";
 import { Benefits } from "./sections/Benefits";
 import { SocialProof } from "./sections/SocialProof";
 import { Rewards } from "./sections/Rewards";
@@ -22,7 +21,6 @@ function Home() {
       <Navbar />
       <Hero />
       <ImageCarousel />
-      <WhatIs />
       <SocialProof />
       <Benefits />
       <Rewards />

@@ -105,7 +105,7 @@ export function Signup() {
 
           {/* Subheading */}
           <div className="font-black uppercase leading-snug mt-2" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "1px" }}>
-            <span className="text-foreground">BECOME </span>
+            <span className="text-foreground">JOIN </span>
             <span className="text-primary">BHAI LOG</span>
             <span className="text-foreground"> TODAY.</span>
             <br />
@@ -211,7 +211,7 @@ export function Signup() {
                 <div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /></svg>
                     </span>
                     <input {...register("name")} placeholder="Your Name" className={`${inputClass} pl-9`} />
                   </div>
@@ -220,7 +220,7 @@ export function Signup() {
                 <div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 7 10-7" /></svg>
                     </span>
                     <input {...register("email")} placeholder="Email Address" className={`${inputClass} pl-9`} />
                   </div>
@@ -266,7 +266,7 @@ export function Signup() {
               <div>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s-8-6.2-8-12a8 8 0 1 1 16 0c0 5.8-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s-8-6.2-8-12a8 8 0 1 1 16 0c0 5.8-8 12-8 12z" /><circle cx="12" cy="10" r="3" /></svg>
                   </span>
                   <input {...register("city")} placeholder="Your City" className={`${inputClass} pl-9`} />
                 </div>
@@ -276,7 +276,7 @@ export function Signup() {
               {/* Row 4: How did you hear */}
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
                 </span>
                 <select
                   {...register("source")}
@@ -289,7 +289,7 @@ export function Signup() {
                   ))}
                 </select>
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6" /></svg>
                 </span>
               </div>
 
@@ -339,17 +339,17 @@ export function Signup() {
               {/* Trust badges */}
               <div className="flex items-center justify-center gap-4 text-foreground/40 text-[10px] uppercase tracking-wider flex-wrap">
                 <span className="flex items-center gap-1">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                   100% FREE TO JOIN
                 </span>
                 <span className="text-foreground/20">|</span>
                 <span className="flex items-center gap-1">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
                   NO SPAM, ONLY FUN
                 </span>
                 <span className="text-foreground/20">|</span>
                 <span className="flex items-center gap-1">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
                   UNSUBSCRIBE ANYTIME
                 </span>
               </div>
