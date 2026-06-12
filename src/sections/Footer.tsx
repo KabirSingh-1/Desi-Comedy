@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
-      <div className="w-full max-w-[1440px] mx-auto px-6 py-8">
-        <div className="grid grid-cols-2 md:grid-cols-[auto_auto_auto_auto_1fr] gap-8 md:gap-10 items-start">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_auto_auto_auto_1fr] gap-10 items-start text-center md:text-left">
 
           {/* Logo */}
           <motion.div
@@ -12,7 +12,7 @@ export function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col leading-none gap-0"
+            className="flex flex-col items-center md:items-start leading-none gap-0"
           >
             <span className="font-display font-black text-foreground text-2xl tracking-tight">DESI</span>
             <span className="font-display font-black text-foreground text-2xl tracking-tight">COMEDY</span>
@@ -28,10 +28,10 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="flex flex-col gap-2"
+            className="flex flex-col items-center md:items-start gap-2 w-full"
           >
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest mb-1">Quick Links</p>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-center md:text-left mx-auto md:mx-0">
               {["All Shows", "About Us", "Bhai Log Benefits", "Gallery", "Contact Us", "FAQ"].map((link) => (
                 <a key={link} href="#" className="text-foreground/60 text-xs hover:text-yellow-400 transition-colors leading-none">
                   {link}
@@ -46,10 +46,10 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="flex flex-col gap-3"
+            className="flex flex-col items-center md:items-start gap-3 w-full"
           >
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest">Follow the Madness</p>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 justify-center">
               {/* Instagram */}
               <a href="#" aria-label="Instagram"
                 className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
@@ -103,7 +103,7 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.16 }}
-            className="flex flex-col gap-2"
+            className="flex flex-col items-center md:items-start gap-2.5 w-full"
           >
             <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest">Contact Us</p>
             <div className="flex items-center gap-2 text-foreground/60 text-xs">
@@ -122,9 +122,9 @@ export function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-end"
+            className="flex items-center justify-center md:justify-end w-full"
           >
-            <div className="text-right flex flex-col leading-none gap-0">
+            <div className="text-center md:text-right flex flex-col leading-none gap-0">
               <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">SEE YOU</span>
               <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">AT THE</span>
               <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">SHOW! 🙂</span>
