@@ -80,7 +80,7 @@ export function Footer() {
               </a>
               {/* X */}
               <a href="#" aria-label="X / Twitter"
-                className="w-8 h-8 rounded-full bg-background border border-border flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-8 h-8 rounded-full bg-black flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h7.04l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -118,16 +118,16 @@ export function Footer() {
 
           {/* SEE YOU AT THE SHOW */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center justify-end"
           >
-            <div className="text-right" style={{ fontFamily: "'Caveat', cursive" }}>
-              <p className="text-foreground font-bold text-2xl leading-tight rotate-1">
-                SEE YOU<br />AT THE<br />SHOW! 🙂
-              </p>
+            <div className="text-right flex flex-col leading-none gap-0">
+              <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">SEE YOU</span>
+              <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">AT THE</span>
+              <span className="font-display font-black text-foreground text-2xl tracking-tight uppercase">SHOW! 🙂</span>
             </div>
           </motion.div>
         </div>

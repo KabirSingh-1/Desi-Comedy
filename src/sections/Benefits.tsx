@@ -13,12 +13,16 @@ const cards = [
     title: "DEEP DISCOUNTS",
     subtitle: "ON EVERY SHOW",
     desc: "Groups of 4 or more get deep discounts on every live show.",
+    image: "/carousel-images/img1.jpg",
+    rotate: "-rotate-1",
   },
   {
     icon: <TicketIcon />,
     title: "BUY 1 GET 1",
     subtitle: "ON SELECT SHOWS",
     desc: "BOGO tickets on select shows.",
+    image: "/carousel-images/img2.jpg",
+    rotate: "rotate-1",
   },
   {
     icon: <ClockIcon />,
@@ -26,27 +30,35 @@ const cards = [
     subtitle: "EARLY ACCESS",
     desc: "48 hours advance tickets before anyone else.",
     badge: "48H",
+    image: "/carousel-images/img3.jpg",
+    rotate: "-rotate-2",
   },
   {
     icon: <ClapperIcon />,
     title: "BEHIND THE",
     subtitle: "SCENES",
     desc: "Exclusive BTS clips before going on social media.",
+    image: "/carousel-images/img4.jpg",
+    rotate: "rotate-2",
   },
   {
     icon: <MegaphoneIcon />,
     title: "SHOUTOUTS &",
     subtitle: "SPECIAL MENTIONS",
     desc: "Get shoutouts on our shows & socials.",
+    image: "/carousel-images/img5.jpg",
+    rotate: "-rotate-1",
   },
   {
     isJoinNow: true,
+    image: "/carousel-images/img6.jpg",
+    rotate: "rotate-1",
   },
 ];
 
 export function Benefits() {
   return (
-    <section id="benefits" className="bg-background py-20 overflow-hidden">
+    <section id="benefits" className="bg-background pt-8 pb-20 overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto px-6">
 
         {/* ── HEADER ── */}
@@ -71,7 +83,7 @@ export function Benefits() {
         </div>
 
         {/* ── CARDS GRID (3 × 2) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {cards.map((card, i) => {
             if (card.isJoinNow) {
               return (
@@ -81,36 +93,50 @@ export function Benefits() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.06 }}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className="relative overflow-hidden rounded-2xl border-2 border-primary border-dashed bg-card shadow-sm flex flex-col items-start p-8 transition-all duration-300 hover:border-solid hover:bg-primary/5 hover:shadow-lg group cursor-pointer"
+                  whileHover={{ scale: 1.04, y: -8, rotate: 0, zIndex: 10 }}
+                  className={`relative bg-card border-2 border-dashed border-primary/60 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none cursor-pointer group ${card.rotate}`}
+                  style={{ borderRadius: "4px" }}
                 >
-                  <div className="absolute inset-0 bg-primary/[0.02] group-hover:bg-primary/[0.08] transition-colors" />
-                  
-                  {/* Icon area */}
-                  <div className="relative z-10 mb-6 flex items-center justify-between w-full">
-                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-md">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                      </svg>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-primary/20 backdrop-blur-[1px] border border-primary/30 shadow-sm -rotate-2 z-20 pointer-events-none" />
+
+                  {/* Photo container */}
+                  <div className="w-full aspect-square overflow-hidden bg-black/5 border border-black/10 rounded-sm relative mb-4">
+                    <img
+                      src={card.image}
+                      alt="Join Bhai Log"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+                  </div>
+
+                  {/* Title & Info */}
+                  <div className="w-full flex flex-col text-left px-1 flex-1">
+                    <div className="mb-2">
+                      <span className="inline-block text-primary bg-primary/10 p-1.5 rounded-md">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                      </span>
                     </div>
-                  </div>
 
-                  {/* Title */}
-                  <div className="relative z-10 flex flex-col mb-4">
-                    <span className="font-black text-foreground text-xl md:text-2xl uppercase leading-none tracking-wide mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                      JOIN THE FAMILY
-                    </span>
-                    <span className="font-black text-primary text-xl md:text-2xl uppercase leading-none tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                      BECOME BHAI LOG
-                    </span>
-                  </div>
+                    <div className="flex flex-col mb-2 leading-none">
+                      <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                        JOIN THE FAMILY
+                      </span>
+                      <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                        BECOME BHAI LOG
+                      </span>
+                    </div>
 
-                  {/* Description */}
-                  <p className="relative z-10 text-foreground/80 leading-relaxed mt-auto font-bold uppercase tracking-widest text-xs flex items-center gap-2">
-                    Free to join. Always will be.
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </p>
-                  <a href="#join" className="absolute inset-0 z-20"></a>
+                    <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
+                      Get early show access, secret discount codes, and community invites.
+                    </p>
+
+                    <p className="text-primary font-black uppercase tracking-widest text-[10px] flex items-center gap-2 mt-auto pt-4 group-hover:translate-x-1 transition-transform">
+                      Free to join. Always will be. →
+                    </p>
+                  </div>
+                  <a href="#join" className="absolute inset-0 z-20" />
                 </motion.div>
               );
             }
@@ -122,35 +148,49 @@ export function Benefits() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.06 }}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm flex flex-col items-start p-8 transition-all duration-300 hover:border-primary hover:shadow-lg group"
+                whileHover={{ scale: 1.04, y: -8, rotate: 0, zIndex: 10 }}
+                className={`relative bg-card border border-border/80 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none ${card.rotate}`}
+                style={{ borderRadius: "4px" }}
               >
-                {/* Icon area */}
-                <div className="relative z-10 mb-6 flex items-center justify-between w-full">
-                  <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    {card.icon}
-                  </div>
-                  {card.badge && (
-                    <span className="text-primary font-black text-2xl leading-none opacity-80" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                      {card.badge}
+                {/* Polaroid Tape */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/40 backdrop-blur-[1px] border border-white/25 shadow-sm rotate-2 z-20 pointer-events-none" />
+
+                {/* Photo container */}
+                <div className="w-full aspect-square overflow-hidden bg-black/5 border border-black/10 rounded-sm relative mb-4">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover grayscale-[10%] contrast-[105%] brightness-[102%]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/5 pointer-events-none" />
+                </div>
+
+                {/* Title & Info */}
+                <div className="w-full flex flex-col text-left px-1 flex-1">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-primary bg-primary/10 p-1.5 rounded-md flex-shrink-0">
+                      {card.icon}
                     </span>
-                  )}
-                </div>
+                    {card.badge && (
+                      <span className="bg-primary/10 text-primary font-black px-2 py-0.5 text-xs rounded uppercase tracking-wider">
+                        {card.badge}
+                      </span>
+                    )}
+                  </div>
 
-                {/* Title */}
-                <div className="relative z-10 flex flex-col mb-4">
-                  <span className="font-black text-foreground text-xl md:text-2xl uppercase leading-none tracking-wide mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {card.title}
-                  </span>
-                  <span className="font-black text-primary text-xl md:text-2xl uppercase leading-none tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {card.subtitle}
-                  </span>
-                </div>
+                  <div className="flex flex-col mb-2 leading-none">
+                    <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      {card.title}
+                    </span>
+                    <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      {card.subtitle}
+                    </span>
+                  </div>
 
-                {/* Description */}
-                <p className="relative z-10 text-foreground/70 text-base leading-relaxed mt-auto font-medium">
-                  {card.desc}
-                </p>
+                  <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
+                    {card.desc}
+                  </p>
+                </div>
               </motion.div>
             );
           })}

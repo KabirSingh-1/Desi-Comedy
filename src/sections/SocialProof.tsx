@@ -67,7 +67,7 @@ export function SocialProof() {
   }, [selectedVideo]);
 
   return (
-    <section id="social-proof" className="bg-background border-t border-border overflow-hidden pb-16">
+    <section id="social-proof" className="bg-background border-t border-border overflow-hidden pb-6">
       <div className="w-full max-w-[1440px] mx-auto px-6 py-20 flex flex-col gap-16">
 
         {/* ── HEADER & HIGHLIGHTS ── */}
@@ -190,33 +190,7 @@ export function SocialProof() {
           </div>
         </div>
 
-        {/* ── STATS SECTION ── */}
-        <div className="w-full flex justify-center mt-4">
-          <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm w-full lg:w-1/2">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
-              {stats.map((s, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`flex flex-col items-center text-center gap-2 ${i !== 0 ? 'md:pl-8 pt-8 md:pt-0' : ''}`}
-                >
-                  <span className="text-primary mb-2 bg-primary/10 p-3 rounded-full">{s.icon}</span>
-                  <div className="font-black text-foreground text-4xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {s.value}
-                  </div>
-                  <div className="text-foreground/60 text-xs font-bold uppercase tracking-widest mt-1">
-                    {s.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── BOTTOM BANNER CTA ── */}
+        {/* ── COMBINED STATS & BANNER CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -229,24 +203,46 @@ export function SocialProof() {
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-transparent" />
 
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-16 gap-8">
-            <div className="flex flex-col gap-2 max-w-xl text-center md:text-left">
-              <p className="font-black text-background text-4xl md:text-6xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1.4fr_1fr] items-center p-10 md:p-16 gap-10 lg:gap-8">
+            {/* Left side: Message */}
+            <div className="flex flex-col gap-2 text-center lg:text-left">
+              <p className="font-black text-background text-4xl md:text-5xl uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 YOU ARE <span className="text-primary">OUR FAMILY.</span> <span className="text-red-500">❤️</span>
               </p>
-              <p className="text-background/70 text-base md:text-lg mt-4 max-w-md">
+              <p className="text-background/70 text-sm md:text-base mt-2 max-w-sm mx-auto lg:mx-0">
                 Be part of the journey. Get exclusive access, massive discounts, and a community built on laughter.
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-4 flex-shrink-0">
+            {/* Middle: Stats */}
+            <div className="flex justify-center w-full py-4 lg:py-0 border-y lg:border-y-0 border-background/10">
+              <div className="grid grid-cols-3 w-full divide-x divide-background/10">
+                {stats.map((s, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center text-center gap-1.5 px-2 md:px-4"
+                  >
+                    <span className="text-primary mb-1 bg-primary/20 p-2.5 rounded-full">{s.icon}</span>
+                    <div className="font-black text-background text-3xl md:text-4xl leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      {s.value}
+                    </div>
+                    <div className="text-background/60 text-[10px] md:text-xs font-bold uppercase tracking-widest leading-tight">
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side: CTA */}
+            <div className="flex flex-col items-center gap-3 flex-shrink-0 text-center">
               <a
                 href="#join"
-                className="bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-10 py-5 rounded-full hover:scale-105 hover:bg-opacity-90 transition-all shadow-xl"
+                className="bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-8 py-4.5 rounded-full hover:scale-105 hover:bg-opacity-90 transition-all shadow-xl"
               >
                 JOIN BHAI LOG NOW ⚡
               </a>
-              <p className="text-background/50 text-xs font-semibold tracking-widest uppercase">Free to join.</p>
+              <p className="text-background/50 text-[10px] md:text-xs font-semibold tracking-widest uppercase">Free to join.</p>
             </div>
           </div>
         </motion.div>

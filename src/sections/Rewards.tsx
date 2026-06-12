@@ -57,20 +57,7 @@ export function Rewards() {
   return (
     <section id="rewards" className="bg-background overflow-hidden border-t border-border">
 
-      {/* ── TOP BANNER ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="bg-card border-b border-border py-3 px-6 flex items-center justify-center gap-2"
-      >
-        <span className="text-yellow-400 text-sm font-bold">➜</span>
-        <span className="text-foreground font-display font-bold text-sm uppercase tracking-wider">
-          The more shows you attend, the more{" "}
-          <span className="text-yellow-400">EPIC</span> it gets!
-        </span>
-      </motion.div>
+
 
       <div className="w-full max-w-[1440px] mx-auto px-6 py-12 grid md:grid-cols-[260px_1fr] gap-8 items-center">
 
@@ -103,15 +90,7 @@ export function Rewards() {
             Attend more shows. Unlock more <span className="text-yellow-500 font-bold underline decoration-yellow-500/30 underline-offset-4">madness!</span>
           </p>
 
-          {/* Quote box */}
-          <div className="relative mt-2 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md border-l-4 border-yellow-400 rounded-r-2xl p-5 shadow-lg w-max pr-12">
-            <div className="absolute top-0 right-2 text-6xl text-yellow-400/10 font-serif leading-none">"</div>
-            <p className="text-foreground font-black text-sm md:text-base uppercase leading-relaxed tracking-widest relative z-10" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              COME TOGETHER.<br />
-              LAUGH TOGETHER.<br />
-              STAY TOGETHER.
-            </p>
-          </div>
+
         </motion.div>
 
         {/* ── RIGHT: Milestone cards row ── */}
