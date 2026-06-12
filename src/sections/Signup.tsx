@@ -171,7 +171,7 @@ export function Signup() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="bg-card border border-border rounded-[2rem] p-8 md:p-10 flex flex-col gap-6 relative"
+          className="bg-card border border-border rounded-[2rem] p-5 sm:p-8 md:p-10 flex flex-col gap-6 relative"
         >
           {/* Form heading */}
           <div>
@@ -207,7 +207,7 @@ export function Signup() {
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
               {/* Row 1: Name + Email */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30">
@@ -230,15 +230,15 @@ export function Signup() {
 
               {/* Row 2: Phone with flag */}
               <div>
-                <div className="flex gap-2">
-                  <div className="relative flex items-center bg-transparent border border-border/80 rounded-lg text-foreground text-sm flex-shrink-0 hover:border-primary transition-colors focus-within:border-primary">
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <div className="relative flex items-center bg-transparent border border-border/80 rounded-lg text-foreground text-sm flex-shrink-0 hover:border-primary transition-colors focus-within:border-primary w-full sm:w-auto">
                     <Controller
                       control={control}
                       name="countryCode"
                       defaultValue="+1"
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <SelectTrigger className="w-[110px] bg-transparent border-0 shadow-none focus:ring-0 text-foreground/70 font-medium pl-4 pr-1 h-[50px] outline-none rounded-lg">
+                          <SelectTrigger className="w-full sm:w-[110px] bg-transparent border-0 shadow-none focus:ring-0 text-foreground/70 font-medium pl-4 pr-1 h-[50px] outline-none rounded-lg">
                             <SelectValue placeholder="Code" />
                           </SelectTrigger>
                           <SelectContent position="popper" side="bottom" sideOffset={4} className="max-h-[300px] w-[130px]">
@@ -305,11 +305,10 @@ export function Signup() {
                   <label
                     htmlFor="agree"
                     className="w-5 h-5 border-2 border-border rounded-[4px] flex items-center justify-center cursor-pointer bg-transparent peer-checked:bg-primary peer-checked:border-primary transition-colors block"
-                  >
-                    <svg width="10" height="10" viewBox="0 0 14 14" fill="none" className="opacity-0 peer-checked:opacity-100 absolute pointer-events-none">
-                      <path d="M2 7l3.5 3.5L12 3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </label>
+                  />
+                  <svg width="10" height="10" viewBox="0 0 14 14" fill="none" className="opacity-0 peer-checked:opacity-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                    <path d="M2 7l3.5 3.5L12 3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
                 <label htmlFor="agree" className="text-foreground/70 text-sm leading-snug cursor-pointer select-none">
                   I agree to receive updates on shows, offers & exclusive content from{" "}
@@ -342,12 +341,12 @@ export function Signup() {
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                   100% FREE TO JOIN
                 </span>
-                <span className="text-foreground/20">|</span>
+                <span className="text-foreground/20 hidden sm:inline">|</span>
                 <span className="flex items-center gap-1">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
                   NO SPAM, ONLY FUN
                 </span>
-                <span className="text-foreground/20">|</span>
+                <span className="text-foreground/20 hidden sm:inline">|</span>
                 <span className="flex items-center gap-1">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
                   UNSUBSCRIBE ANYTIME

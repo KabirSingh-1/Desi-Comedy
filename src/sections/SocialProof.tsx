@@ -53,6 +53,63 @@ const stats = [
   { icon: <PinIcon />, value: "15+", label: "CITIES & VENUES", sub: "PACKED" },
 ];
 
+interface TestimonialItem {
+  name: string;
+  location: string;
+  quote: string;
+  avatar: string;
+}
+
+interface TestimonialCardProps {
+  t: TestimonialItem;
+  index: number;
+  isMarquee?: boolean;
+}
+
+function TestimonialCard({ t, index, isMarquee = false }: TestimonialCardProps) {
+  const cardElement = (
+    <div className={`bg-card border border-border rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow ${isMarquee ? "w-[280px] md:w-[320px] flex-shrink-0 h-auto" : "w-full h-full"
+      }`}>
+      {/* Avatar + stars */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
+            {t.avatar}
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-foreground text-sm leading-tight">{t.name}</span>
+            <span className="text-foreground/50 text-xs">{t.location}</span>
+          </div>
+        </div>
+        <div className="flex gap-0.5">
+          {[...Array(5)].map((_, j) => (
+            <span key={j} className="text-primary text-xs">★</span>
+          ))}
+        </div>
+      </div>
+      <p className="text-foreground/80 text-sm leading-relaxed mt-2 italic">
+        "{t.quote}"
+      </p>
+    </div>
+  );
+
+  if (isMarquee) {
+    return cardElement;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="h-full flex"
+    >
+      {cardElement}
+    </motion.div>
+  );
+}
+
 export function SocialProof() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
@@ -68,9 +125,8 @@ export function SocialProof() {
 
   return (
     <section id="social-proof" className="bg-background border-t border-border overflow-hidden pb-6">
-      <div className="w-full max-w-[1440px] mx-auto px-6 py-20 flex flex-col gap-16">
-
-        {/* ── HEADER & HIGHLIGHTS ── */}
+      {/* ── HEADER & HIGHLIGHTS ── */}
+      <div className="w-full max-w-[1440px] mx-auto px-6 pt-20 pb-4 flex flex-col gap-8">
         <div className="flex flex-col justify-center items-center gap-8 pb-8">
           <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center gap-3 max-w-3xl relative">
 
@@ -100,93 +156,80 @@ export function SocialProof() {
               Some moments with our <span className="text-primary font-bold">amazing BhaiLog!</span>
             </p>
           </motion.div>
-
-
         </div>
+      </div>
 
-        {/* ── SCROLLING VIDEO MARQUEE ── */}
-        <div className="relative w-full overflow-hidden py-4 -mx-6 px-6 md:px-0 md:-mx-0">
+      {/* ── SCROLLING VIDEO MARQUEE (Full Bleed / Edge-to-Edge) ── */}
+      <div className="relative w-full overflow-hidden py-4">
+        <motion.div
+          className="flex gap-4 md:gap-6 pr-4 md:pr-6 w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+        >
+          {[...Array(7), ...Array(7)].map((_, index) => {
+            const i = index % 7;
+            return (
+              <div
+                key={index}
+                className="relative w-64 md:w-72 lg:w-[300px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-md"
+                style={{ aspectRatio: "4/5" }}
+                onClick={() => setSelectedVideo(`/videos/vid${i}.mp4`)}
+              >
+                <video
+                  src={`/videos/vid${i}.mp4`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectPosition: i % 2 === 0 ? "top" : "center" }}
+                />
+                {/* Sleek Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/70" />
 
-          <motion.div
-            className="flex gap-4 md:gap-6 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-          >
-            {[...Array(7), ...Array(7)].map((_, index) => {
-              const i = index % 7;
-              return (
-                <div
-                  key={index}
-                  className="relative w-64 md:w-72 lg:w-[300px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-md"
-                  style={{ aspectRatio: "4/5" }}
-                  onClick={() => setSelectedVideo(`/videos/vid${i}.mp4`)}
-                >
-                  <video
-                    src={`/videos/vid${i}.mp4`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: i % 2 === 0 ? "top" : "center" }}
-                  />
-                  {/* Sleek Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/70" />
-
-                  {/* Expand icon */}
-                  <div className="absolute bottom-4 right-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <div className="text-white/90 group-hover:text-primary transition-colors drop-shadow-lg">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 3h6v6"></path>
-                        <path d="M9 21H3v-6"></path>
-                        <path d="M21 3l-7 7"></path>
-                        <path d="M3 21l7-7"></path>
-                      </svg>
-                    </div>
+                {/* Expand icon */}
+                <div className="absolute bottom-4 right-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <div className="text-white/90 group-hover:text-primary transition-colors drop-shadow-lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M15 3h6v6"></path>
+                      <path d="M9 21H3v-6"></path>
+                      <path d="M21 3l-7 7"></path>
+                      <path d="M3 21l7-7"></path>
+                    </svg>
                   </div>
                 </div>
-              );
-            })}
-          </motion.div>
-        </div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
 
+      {/* ── TESTIMONIALS & STATS ── */}
+      <div className="w-full max-w-[1440px] mx-auto px-6 pt-4 pb-20 flex flex-col gap-16">
         {/* ── TESTIMONIALS ── */}
         <div className="flex flex-col gap-8 mt-4">
           <h3 className="font-black text-foreground uppercase tracking-widest text-lg md:text-xl">
             WHAT OUR <span className="text-primary">BHAI LOG</span> SAY
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Desktop Grid Layout (lg and above) */}
+          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
             {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card border border-border rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Avatar + stars */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm flex-shrink-0">
-                      {t.avatar}
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-foreground text-sm leading-tight">{t.name}</span>
-                      <span className="text-foreground/50 text-xs">{t.location}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, j) => (
-                      <span key={j} className="text-primary text-xs">★</span>
-                    ))}
-                  </div>
-                </div>
-                <p className="text-foreground/80 text-sm leading-relaxed mt-2 italic">
-                  "{t.quote}"
-                </p>
-              </motion.div>
+              <TestimonialCard key={i} t={t} index={i} />
             ))}
+          </div>
+
+          {/* Mobile/Tablet Scrolling Marquee Layout (below lg) */}
+          <div className="lg:hidden relative w-[calc(100%+3rem)] -mx-6 px-6 overflow-hidden py-4">
+            <motion.div
+              className="flex gap-6 pr-6 w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+            >
+              {[...testimonials, ...testimonials].map((t, i) => (
+                <TestimonialCard key={i} t={t} index={i} isMarquee />
+              ))}
+            </motion.div>
           </div>
         </div>
 
@@ -257,23 +300,23 @@ export function SocialProof() {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-8"
             onClick={() => setSelectedVideo(null)}
           >
-            <button 
+            <button
               className="absolute top-6 right-6 text-white bg-black/50 hover:bg-white/20 rounded-full p-2 w-10 h-10 flex items-center justify-center transition-colors z-[101]"
               onClick={() => setSelectedVideo(null)}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="relative max-w-[1000px] max-h-[90vh] w-full rounded-2xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <video 
-                src={selectedVideo} 
-                controls 
-                autoPlay 
+              <video
+                src={selectedVideo}
+                controls
+                autoPlay
                 playsInline
                 className="w-full h-full object-contain"
                 style={{ maxHeight: '90vh' }}

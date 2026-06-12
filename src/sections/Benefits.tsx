@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 const fadeUp = (delay = 0) => ({
@@ -56,13 +57,146 @@ const cards = [
   },
 ];
 
+interface CardItem {
+  icon?: ReactNode;
+  title?: string;
+  subtitle?: string;
+  desc?: string;
+  badge?: string;
+  image: string;
+  rotate: string;
+  isJoinNow?: boolean;
+}
+
+interface BenefitCardProps {
+  card: CardItem;
+  index: number;
+  isMarquee?: boolean;
+}
+
+function BenefitCard({ card, index, isMarquee = false }: BenefitCardProps) {
+  const cardContent = (() => {
+    if (card.isJoinNow) {
+      return (
+        <div className="w-full flex flex-col text-left px-1 flex-1">
+          <div className="mb-2">
+            <span className="inline-block text-primary bg-primary/10 p-1.5 rounded-md">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </span>
+          </div>
+
+          <div className="flex flex-col mb-2 leading-none">
+            <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              JOIN THE FAMILY
+            </span>
+            <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              BECOME BHAI LOG
+            </span>
+          </div>
+
+          <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
+            Get early show access, secret discount codes, and community invites.
+          </p>
+
+          <p className="text-primary font-black uppercase tracking-widest text-[10px] flex items-center gap-2 mt-auto pt-4 group-hover:translate-x-1 transition-transform">
+            Free to join. Always will be. →
+          </p>
+          <a href="#join" className="absolute inset-0 z-20" />
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-full flex flex-col text-left px-1 flex-1">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <span className="text-primary bg-primary/10 p-1.5 rounded-md flex-shrink-0">
+            {card.icon}
+          </span>
+          {card.badge && (
+            <span className="bg-primary/10 text-primary font-black px-2 py-0.5 text-xs rounded uppercase tracking-wider">
+              {card.badge}
+            </span>
+          )}
+        </div>
+
+        <div className="flex flex-col mb-2 leading-none">
+          <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            {card.title}
+          </span>
+          <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            {card.subtitle}
+          </span>
+        </div>
+
+        <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
+          {card.desc}
+        </p>
+      </div>
+    );
+  })();
+
+  const wrapperClass = card.isJoinNow
+    ? `relative bg-card border-2 border-dashed border-primary/60 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none cursor-pointer group ${card.rotate} ${isMarquee ? "w-[280px] md:w-[320px] flex-shrink-0" : "w-full flex-1"
+    }`
+    : `relative bg-card border border-border/80 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none ${card.rotate} ${isMarquee ? "w-[280px] md:w-[320px] flex-shrink-0" : "w-full flex-1"
+    }`;
+
+  const tapeBg = card.isJoinNow
+    ? "bg-primary/20 border-primary/30"
+    : "bg-white/40 border-white/25";
+
+  const element = (
+    <div className={wrapperClass} style={{ borderRadius: "4px" }}>
+      {/* Polaroid Tape */}
+      <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 backdrop-blur-[1px] border shadow-sm rotate-2 z-20 pointer-events-none ${tapeBg}`} />
+
+      {/* Photo container */}
+      <div className="w-full aspect-square overflow-hidden bg-black/5 border border-black/10 rounded-sm relative mb-4">
+        <img
+          src={card.image}
+          alt={card.isJoinNow ? "Join Bhai Log" : card.title}
+          className={`w-full h-full object-cover transition-transform duration-500 ${card.isJoinNow
+              ? "group-hover:scale-105"
+              : "grayscale-[10%] contrast-[105%] brightness-[102%]"
+            }`}
+        />
+        {card.isJoinNow ? (
+          <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/5 pointer-events-none" />
+        )}
+      </div>
+
+      {cardContent}
+    </div>
+  );
+
+  if (isMarquee) {
+    return element;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      whileHover={{ scale: 1.04, y: -8, rotate: 0, zIndex: 10 }}
+      className="h-full flex"
+    >
+      {element}
+    </motion.div>
+  );
+}
+
 export function Benefits() {
   return (
     <section id="benefits" className="bg-background pt-8 pb-20 overflow-hidden">
-      <div className="w-full max-w-[1440px] mx-auto px-6">
-
-        {/* ── HEADER ── */}
-        <div className="relative flex flex-col items-center justify-center mb-16 text-center">
+      {/* ── HEADER ── */}
+      <div className="w-full max-w-[1440px] mx-auto px-6 mb-16">
+        <div className="relative flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,123 +215,28 @@ export function Benefits() {
             </p>
           </motion.div>
         </div>
+      </div>
 
-        {/* ── CARDS GRID (3 × 2) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {cards.map((card, i) => {
-            if (card.isJoinNow) {
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.06 }}
-                  whileHover={{ scale: 1.04, y: -8, rotate: 0, zIndex: 10 }}
-                  className={`relative bg-card border-2 border-dashed border-primary/60 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none cursor-pointer group ${card.rotate}`}
-                  style={{ borderRadius: "4px" }}
-                >
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-primary/20 backdrop-blur-[1px] border border-primary/30 shadow-sm -rotate-2 z-20 pointer-events-none" />
-
-                  {/* Photo container */}
-                  <div className="w-full aspect-square overflow-hidden bg-black/5 border border-black/10 rounded-sm relative mb-4">
-                    <img
-                      src={card.image}
-                      alt="Join Bhai Log"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                  </div>
-
-                  {/* Title & Info */}
-                  <div className="w-full flex flex-col text-left px-1 flex-1">
-                    <div className="mb-2">
-                      <span className="inline-block text-primary bg-primary/10 p-1.5 rounded-md">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                        </svg>
-                      </span>
-                    </div>
-
-                    <div className="flex flex-col mb-2 leading-none">
-                      <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                        JOIN THE FAMILY
-                      </span>
-                      <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                        BECOME BHAI LOG
-                      </span>
-                    </div>
-
-                    <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
-                      Get early show access, secret discount codes, and community invites.
-                    </p>
-
-                    <p className="text-primary font-black uppercase tracking-widest text-[10px] flex items-center gap-2 mt-auto pt-4 group-hover:translate-x-1 transition-transform">
-                      Free to join. Always will be. →
-                    </p>
-                  </div>
-                  <a href="#join" className="absolute inset-0 z-20" />
-                </motion.div>
-              );
-            }
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
-                whileHover={{ scale: 1.04, y: -8, rotate: 0, zIndex: 10 }}
-                className={`relative bg-card border border-border/80 shadow-md p-4 pb-8 transition-all duration-300 flex flex-col items-center select-none ${card.rotate}`}
-                style={{ borderRadius: "4px" }}
-              >
-                {/* Polaroid Tape */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/40 backdrop-blur-[1px] border border-white/25 shadow-sm rotate-2 z-20 pointer-events-none" />
-
-                {/* Photo container */}
-                <div className="w-full aspect-square overflow-hidden bg-black/5 border border-black/10 rounded-sm relative mb-4">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover grayscale-[10%] contrast-[105%] brightness-[102%]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/5 pointer-events-none" />
-                </div>
-
-                {/* Title & Info */}
-                <div className="w-full flex flex-col text-left px-1 flex-1">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-primary bg-primary/10 p-1.5 rounded-md flex-shrink-0">
-                      {card.icon}
-                    </span>
-                    {card.badge && (
-                      <span className="bg-primary/10 text-primary font-black px-2 py-0.5 text-xs rounded uppercase tracking-wider">
-                        {card.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col mb-2 leading-none">
-                    <span className="font-black text-foreground text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                      {card.title}
-                    </span>
-                    <span className="font-black text-primary text-lg uppercase tracking-wide" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                      {card.subtitle}
-                    </span>
-                  </div>
-
-                  <p className="text-foreground/75 text-xs font-semibold uppercase tracking-wider leading-relaxed mt-1">
-                    {card.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+      {/* ── DESKTOP CARDS GRID (lg and above) ── */}
+      <div className="hidden lg:block w-full max-w-[1440px] mx-auto px-6">
+        <div className="grid lg:grid-cols-3 gap-8 md:gap-10">
+          {cards.map((card, i) => (
+            <BenefitCard key={i} card={card} index={i} />
+          ))}
         </div>
+      </div>
 
-
-
+      {/* ── MOBILE/TABLET SCROLLING MARQUEE (Below lg) ── */}
+      <div className="lg:hidden relative w-full overflow-hidden py-4">
+        <motion.div
+          className="flex gap-6 pr-6 w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+        >
+          {[...cards, ...cards].map((card, i) => (
+            <BenefitCard key={i} card={card} index={i} isMarquee />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
